@@ -1,5 +1,6 @@
 <?php
 
+// $isLoggedIn = false;
 include "db_connect.php";
 $user_email = $_POST['user_email'];
 $password = $_POST['password'];
@@ -17,9 +18,12 @@ $publish2 = "on";
 				session_start(); 
 				$_SESSION['user_email']=$_POST['user_email'];
 					//header ('Location: main.php');
+				$_SESSION['isLoggedIn'] = true;
+				$_SESSION['user_name'] =$row['user_name'];
+				// header('Location: index.php');
 								
 ?>
-<meta HTTP-EQUIV="REFRESH" content="0; url=postad.php">
+<meta HTTP-EQUIV="REFRESH" content="0; url=index.php">
 <?php							
 	exit();
 			}

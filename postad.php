@@ -3,6 +3,13 @@ ob_start();
 include "db_connect.php";
 session_cache_limiter( FALSE );
 session_start(); 
+$isLoggedIn = false;
+
+// Check if the session variable is set and user is logged in
+if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
+    $username = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : '';
+    $isLoggedIn = true;
+}
 if (isset($_SESSION['user_email'])) {
     
     $user_email = $_SESSION['user_email'];
@@ -13,6 +20,7 @@ if (isset($_SESSION['user_email'])) {
     $user_name = $row['user_name'];
     $fullname = $row['fullname'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

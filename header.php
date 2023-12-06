@@ -13,7 +13,7 @@
                     <a href="li" class="menu-link main-menu-link item-title">All Adds</a>
                 </li>
                 <li>
-                    <a href="blog.#">News</a>
+                    <a href="news.php">News</a>
                 </li>
                 <li>
                     <a href="Contact.#">Contact Us</a>
@@ -62,20 +62,34 @@
                     </li>
                     <li class="line__v">|</li>
                     <li>
-                        <a href="#">News</a>
+                        <a href="news.php">News</a>
                     </li>
+                    <li class="line__v">|</li>
+                    <?php
+                    if($isLoggedIn) { 
+                    ?>
+                    <li>
+                        <a href="#"><i class="icon-user icons"></i> <?php echo $username; ?></a>
+                    </li>
+
+                    <li class="line__v">|</li>
+                    <li>
+                        <a href="main_logout.php">Logout</a>
+                    </li>
+                    <?php } else { ?>
                     <li class="line__v">|</li>
                     <li>
                         <a href="signin.php"><i class="icon-user icons"></i>Sign in</a>
                     </li>
                     <li class="line__v">|</li>
                     <li>
-                        <a href="signin.php"><i class="icon-notifications icons"></i>Registration</a>
+                        <a href="signup.php"><i class="icon-notifications icons"></i>Registration</a>
                     </li>
+                    <?php } ?>
                 </ul>
                 <button class="button_sell btn-lg float-right" type="submit"
                     style="background-color: #8a288f; width: 120px; border:none; margin: 26px 10px; height: 45px;color: #fff;">
-                    Sell
+                    <a href="postad.php" style="color:#fff; text-decoration:none;">Sell</a>
                 </button>
             </div>
         </div>

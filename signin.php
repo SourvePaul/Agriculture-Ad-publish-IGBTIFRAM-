@@ -1,3 +1,15 @@
+<?php
+ require_once('db_connect.php');
+ session_start();
+
+// Default value for $isLoggedIn
+$isLoggedIn = false;
+
+// Check if the session variable is set and user is logged in
+if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
+    $isLoggedIn = true;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

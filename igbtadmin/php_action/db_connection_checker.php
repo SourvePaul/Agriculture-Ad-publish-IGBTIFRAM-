@@ -19,6 +19,8 @@ $_SESSION['discard_after_x'] = $now + 7200;  //7200 means 3600sec = 2 hour
 
 if(!$_SESSION['adminName']) {
 	header('location: login.php');	
-} 
+} elseif (!$_SESSION['user_email']){
+    header('location: signin.php');
+}
 
 ?>

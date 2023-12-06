@@ -1,4 +1,5 @@
 <?php
+require_once('db_connect.php');
 // function make_query($connection) {
 $sql = "SELECT * FROM footer_image WHERE f_status = 0 LIMIT 1";  
 // $result = mysqli_query($connection,$sql);
