@@ -1,579 +1,148 @@
-<!DOCTYPE html>
-<html lang="en">
+<section class="content">
 
-<head>
-    <title>Category</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="fonts/font-awesome/css/all.min.css">
-    <link rel="stylesheet" href="fonts/icomoon2/style.css">
-    <link rel="stylesheet" href="fonts/icomoon1/style.css">
-</head>
+    <div class="listing__products" id="product_list">
+        <div class="row">
+            <?php
 
-<body>
-    <!-- Loader-->
-    <div id="page-preloader"><span class="spinner border-t_second_b border-t_prim_a"></span></div>
-    <!-- Loader end-->
-    <div class="wrapper">
-        <?php include "header.php"; ?>
-        <main class="main">
-            <div class="container__1620">
-                <section class="first__screen">
-                    <div class="row">
-                        <div class="col-md-12 mb-3">
-                           <h4 class="text-center text-white">iGbetiFarm is the Best Marketplace to Buy & sell  Your Agricultural products quickly</h4>
-                            <div class="first__screen-form">
-                                <form action="#">
-                                    <div class="input-group">
-                                        <input type="search" class="form-control" aria-label="Text input with dropdown button" placeholder="I am looking for .... ">
-                                        
-                                        <ul class="dropdown-menu dropdown-menu-end"> 
-                                            <li>
-                                                <a class="dropdown-item" href="#">London</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Paris</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">New Yourk</a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Madrid</a>
-                                            </li>
-                                        </ul>
-                                        <button type="submit" class="first-bg-color btn-hover-animate center"> search
-                                            <span class="btn-icon-span first-bg-color">
-                                                <i class="fa fa-search fa-first"></i>
-                                                <i class="fa fa-chevron-right fa-second"></i>
-                                            </span>
-                                        </button>
+                if (isset($_POST['cat_id'])) {
+                    $cat_id = $_POST['cat_id'];
+
+                    if (!empty($cat_id)) {
+                        $sql = "SELECT * FROM ad_info WHERE cat_id = $cat_id ORDER BY ad_id DESC LIMIT 10";
+                    } else {
+                        $sql = "SELECT * FROM ad_info ORDER BY ad_id DESC LIMIT 10";
+                    }
+                
+
+                // $sql = "SELECT * FROM ad_info WHERE cat_id =  ORDER BY ad_id DESC LIMIT 10";  
+                $result = $connection->query($sql);
+                $product = 0;
+                $counter = 0;
+
+                // Check if there are rows returned from the query
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $product++;
+                        $counter++;
+            ?>
+            <?php 
+                if ($counter <= 2) {
+            ?>
+
+            <div class="col-12 col-xl-12 col-md-12 col-sm-12 listing__products__box">
+                <div class="row no-gutters">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 listing__products__image">
+                        <img src="igbtadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
+                            alt="<?php echo $row['ad_id']; ?>" class="card-img" width="360">
+                        <?php 
+                        if ($counter <= 2) {
+                        ?>
+                        <div class="product-badges product-badges-position product-badges-mrg">
+                            <span class="badge rounded-pill hot" style="background-color:#8a288f;">TOP
+                                AD</span>
+                        </div>
+
+                        <?php
+                        } else {
+                        ?>
+                        <div class="product-badges product-badges-position product-badges-mrg" style="display:none;">
+                        </div>
+
+                        <?php
+                        } 
+                        ?>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <?php echo $row['ad_title']; ?></h5>
+                            <p class="card-text">
+                                <?php echo $row['ad_description']; ?></p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins
+                                    ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <?php 
+            } else { 
+            ?>
+            <div class="col-6 col-xl-3 col-md-3 col-sm-3">
+                <div class="listing-card ll-none">
+                    <div class="listing-card__box listing-card__box_featured" data-marker="0">
+                        <div class="listing-card__media shine">
+                            <a href="02_listings-grid.#">
+                                <img src="igbtadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
+                                    alt="<?php echo $row['ad_id']; ?>" width="360" height="200">
+                            </a>
+
+                            <div class="listing-btn-action">
+                                <a class="listing-btn-ico view_more_link" href="02_listings-grid.#"
+                                    data-uk-tooltip="View More" title="" data-aria-describedby="uk-tooltip-0">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                                <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Add to Compare"
+                                    title="" data-aria-describedby="uk-tooltip-1">
+                                    <i class="fa-solid fa-code-compare"></i>
+                                    <i class="fa-solid fa-not-equal"></i>
+                                </a>
+                                <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Add to Favorite"
+                                    title="" data-aria-describedby="uk-tooltip-2">
+                                    <i class="fa-regular fa-heart"></i>
+                                    <i class="fa-solid fa-heart"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <div class="listing-card__body">
+                                <div class="body-wrapper">
+                                    <!-- <div class="title">
+                                    <a href="#"></a>
+                                    </div> -->
+                                    <div class="title">
+                                        <a href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="<?php echo $row['ad_title']; ?>">
+                                            <?php
+                                                $title = $row['ad_title'];
+                                                $words = explode(' ', $title); // Split the string into an array of words
+                                                $limitedWords = implode(' ', array_slice($words, 0, 2));
+                                                echo $limitedWords.'...'; // Output the truncated string
+                                            ?>
+                                        </a>
                                     </div>
-                                </form>
+
+                                    <div class="price">
+                                        &#x20A6;
+                                        <?php echo $row['ad_price']; ?>
+                                    </div>
+                                </div>
+
+                                <p class="body-text">
+                                    <?php echo $row['ad_description']; ?>
+                                </p>
                             </div>
                         </div>
                     </div>
-                    
-                </section>
-            </div>
-            <section class="">
-                <div class="container">
-                    <div class="row gx-0">
-                        <main class="main col-xl-12">
-                            <section class="page-card page-card_leftSidebar">
-                                <div class="container">
-                                    
-            
-            
-                                    <div class="row">
-            
-            
-                                        <aside class="aside aside-left col-lg-4">
-                                            <div class="aside-sticky">
-            
-                                                <div class="aside__box">
-                                                    <h5>Categories</h5>
-                                                   <h6 class="mt-2 mr-5">Cereal & Grains</h6>
-            
-                                            <a href="#" class="text-black">Rice ( Oryza sativa)</a><br/>
-                                            <a href="#" class="text-black">Wheat, bread wheat</a><br/>
-                                            <a href="#" class="text-black">Durum wheat</a><br/>
-                                            <a href="#" class="text-black">macaroni wheat</a><br/>
-                                            <a href="#" class="text-success">See all categories</a>
-            
-            
-                                                    
-
-                                                </div>
-                                                <div class="aside__box">
-                                                    <h5>Price</h5>
-                                                   
-                                                    <div class="d-flex gap-2 mt-3">
-                                                        <input type="text" class="form-control" width="50" placeholder="min">
-                                                    <input type="text" class="form-control" placeholder="max">
-                                                    </div>
-                                                    
-                                                    <div class="mt-5">
-                                                        <div class="d-flex gap-2">
-                                                            <input class="form-check-input" type="radio" name="flexRadioDefault"><br/>
-                                                        <label class="form-check-label" for="flexRadioDefault1">
-                                                            Under 7.2k
-                                                          </label><br/>
-                                                        </div>
-
-                                                        <div class="d-flex gap-2">
-                                                            <input class="form-check-input" type="radio" name="flexRadioDefault"><br/>
-                                                        <label class="form-check-label" for="flexRadioDefault1">
-                                                            7.2-40 k
-                                                          </label><br/>
-                                                        </div>
-
-                                                        <div class="d-flex gap-2">
-                                                            <input class="form-check-input" type="radio" name="flexRadioDefault"><br/>
-                                                        <label class="form-check-label" for="flexRadioDefault1">
-                                                            40-190 k
-                                                          </label><br/>
-                                                        </div>
-
-                                                        <div class="d-flex gap-2">
-                                                            <input class="form-check-input" type="radio" name="flexRadioDefault"><br/>
-                                                        <label class="form-check-label" for="flexRadioDefault1">
-                                                            190-750 k
-                                                          </label><br/>
-                                                        </div>
-
-                                                        <div class="d-flex gap-2">
-                                                            <input class="form-check-input" type="radio" name="flexRadioDefault"><br/>
-                                                        <label class="form-check-label" for="flexRadioDefault1">
-                                                            More than 750 k
-                                                          </label><br/>
-                                                        </div>
-                                                        
-                                                    </div>
-
-                                                    <div class="mt-5 d-flex justify-content-between">
-                                                        <button type="button" class="btn btn-light">Clear</button>
-                                                        <button type="button" class="btn btn-light">Save</button>
-                                                    </div>
-                                        
-            
-            
-                                                    
-
-                                                </div>
-            
-                                            </div>
-
-                                        
-                                        </aside>
-
-                                        
-            
-                                        <main class="main col-lg-8">
-                                            <section class="content">
-                                                <div class="listing__products">
-                                                    <div class="row">
-                                                        <div class="col-4 col-xl-4 col-md-4 col-sm-12">
-                                                            <div class="listing-card ll-none">
-                                                                <div class="listing-card__box listing-card__box_featured" data-marker="0">
-                                                                    <div class="listing-card__media shine">
-                                                                        <a href="02_listings-grid.#">
-                                                                            <img src="img/rice.jpeg" width="360" height="270" alt="Product Name">
-                                                                        </a>
-                                                                        
-                                                                        <div class="listing-btn-action">
-                                                                            <a class="listing-btn-ico view_more_link" href="02_listings-grid.#" data-uk-tooltip="View More" title="" data-aria-describedby="uk-tooltip-0">
-                                                                                <i class="fa-solid fa-eye"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Addto Compare" title="" data-aria-describedby="uk-tooltip-1">
-                                                                                <i class="fa-solid fa-code-compare"></i>
-                                                                                <i class="fa-solid fa-not-equal"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Add to Favorite" title="" data-aria-describedby="uk-tooltip-2">
-                                                                                <i class="fa-regular fa-heart"></i>
-                                                                                <i class="fa-solid fa-heart"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <div class="listing-card__body">
-                                                                            <div class="body-wrapper">
-                                                                                <div class="title">
-                                                                                    <a href="#">Bentley Continental GT</a>
-                                                                                </div>
-                                                                                <div class="price">Tk. 3,250.00</div>
-                                                                            </div>
-                                                                            
-                                                                            <p class="body-text">
-                                                                                Quis nostrud exercitation ullamco laboris nisit
-                                                                                aliquip ex ea commodo consequat...
-                                                                            </p>
-                                                                        </div>
-                                                                       
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-4 col-xl-4 col-md-4 col-sm-12">
-                                                            <div class="listing-card ll-none">
-                                                                <div class="listing-card__box" data-marker="1">
-                                                                    <div class="listing-card__media shine">
-                                                                        <a href="02_listings-grid.#">
-                                                                            <img src="img/wheat.jpeg" width="360" height="270" alt="Product Name">
-                                                                        </a>
-                                                                        <div class="listing-btn-action">
-                                                                            <a class="listing-btn-ico view_more_link" href="02_listings-grid.#" data-uk-tooltip="View More" title="" data-aria-describedby="uk-tooltip-0">
-                                                                                <i class="fa-solid fa-eye"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Addto Compare" title="" data-aria-describedby="uk-tooltip-1">
-                                                                                <i class="fa-solid fa-code-compare"></i>
-                                                                                <i class="fa-solid fa-not-equal"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Add to Favorite" title="" data-aria-describedby="uk-tooltip-2">
-                                                                                <i class="fa-regular fa-heart"></i>
-                                                                                <i class="fa-solid fa-heart"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="listing-card__middle">
-                                                                        <div class="listing-card__body">
-                                                                            <div class="body-wrapper">
-                                                                                <div class="title">
-                                                                                    <a href="#">Jaguar GX 480i </a>
-                                                                                </div>
-                                                                                <div class="price">Tk. 3,250.00</div>
-                                                                                
-                                                                            </div>
-                                                                            <p class="body-text">
-                                                                                Quis nostrud exercitation ullamco laboris nisit
-                                                                                aliquip ex ea commodo consequat...
-                                                                            </p>
-                                                                        </div>
-                                                                        
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-4 col-xl-4 col-md-4 col-sm-12">
-                                                            <div class="listing-card ll-none">
-                                                                <div class="listing-card__box" data-marker="2">
-                                                                    <div class="listing-card__media shine">
-                                                                        <a href="02_listings-grid.#">
-                                                                            <img src="img/mac.jpeg" width="360" height="270" alt="Product Name">
-                                                                        </a>
-                                                                        <div class="listing-btn-action">
-                                                                            <a class="listing-btn-ico view_more_link" href="02_listings-grid.#" data-uk-tooltip="View More" title="" data-aria-describedby="uk-tooltip-0">
-                                                                                <i class="fa-solid fa-eye"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Addto Compare" title="" data-aria-describedby="uk-tooltip-1">
-                                                                                <i class="fa-solid fa-code-compare"></i>
-                                                                                <i class="fa-solid fa-not-equal"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Add to Favorite" title="" data-aria-describedby="uk-tooltip-2">
-                                                                                <i class="fa-regular fa-heart"></i>
-                                                                                <i class="fa-solid fa-heart"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="listing-card__middle">
-                                                                        <div class="listing-card__body">
-                                                                            <div class="body-wrapper">
-                                                                                <div class="title">
-                                                                                    <a href="#">BMW C7 2023</a>
-                                                                                </div>
-                                                                                <div class="price">Tk. 3,250.00</div>
-                                                                            </div>
-                                                                            
-                                                                            <p class="body-text">
-                                                                                Quis nostrud exercitation ullamco laboris nisit
-                                                                                aliquip ex ea commodo consequat...
-                                                                            </p>
-                                                                        </div>
-                                                                       
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        
-
-                                                        <div class="col-4 col-xl-4 col-md-4 col-sm-12">
-                                                            <div class="listing-card ll-none">
-                                                                <div class="listing-card__box listing-card__box_featured" data-marker="0">
-                                                                    <div class="listing-card__media shine">
-                                                                        <a href="02_listings-grid.#">
-                                                                            <img src="img/rice.jpeg" width="360" height="270" alt="Product Name">
-                                                                        </a>
-                                                                        
-                                                                        <div class="listing-btn-action">
-                                                                            <a class="listing-btn-ico view_more_link" href="02_listings-grid.#" data-uk-tooltip="View More" title="" data-aria-describedby="uk-tooltip-0">
-                                                                                <i class="fa-solid fa-eye"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Addto Compare" title="" data-aria-describedby="uk-tooltip-1">
-                                                                                <i class="fa-solid fa-code-compare"></i>
-                                                                                <i class="fa-solid fa-not-equal"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Add to Favorite" title="" data-aria-describedby="uk-tooltip-2">
-                                                                                <i class="fa-regular fa-heart"></i>
-                                                                                <i class="fa-solid fa-heart"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <div class="listing-card__body">
-                                                                            <div class="body-wrapper">
-                                                                                <div class="title">
-                                                                                    <a href="#">Bentley Continental GT</a>
-                                                                                </div>
-                                                                                <div class="price">Tk. 3,250.00</div>
-                                                                            </div>
-                                                                            
-                                                                            <p class="body-text">
-                                                                                Quis nostrud exercitation ullamco laboris nisit
-                                                                                aliquip ex ea commodo consequat...
-                                                                            </p>
-                                                                        </div>
-                                                                       
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-4 col-xl-4 col-md-4 col-sm-12">
-                                                            <div class="listing-card ll-none">
-                                                                <div class="listing-card__box" data-marker="1">
-                                                                    <div class="listing-card__media shine">
-                                                                        <a href="02_listings-grid.#">
-                                                                            <img src="img/wheat.jpeg" width="360" height="270" alt="Product Name">
-                                                                        </a>
-                                                                        <div class="listing-btn-action">
-                                                                            <a class="listing-btn-ico view_more_link" href="02_listings-grid.#" data-uk-tooltip="View More" title="" data-aria-describedby="uk-tooltip-0">
-                                                                                <i class="fa-solid fa-eye"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Addto Compare" title="" data-aria-describedby="uk-tooltip-1">
-                                                                                <i class="fa-solid fa-code-compare"></i>
-                                                                                <i class="fa-solid fa-not-equal"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Add to Favorite" title="" data-aria-describedby="uk-tooltip-2">
-                                                                                <i class="fa-regular fa-heart"></i>
-                                                                                <i class="fa-solid fa-heart"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="listing-card__middle">
-                                                                        <div class="listing-card__body">
-                                                                            <div class="body-wrapper">
-                                                                                <div class="title">
-                                                                                    <a href="#">Jaguar GX 480i </a>
-                                                                                </div>
-                                                                                <div class="price">Tk. 3,250.00</div>
-                                                                                
-                                                                            </div>
-                                                                            <p class="body-text">
-                                                                                Quis nostrud exercitation ullamco laboris nisit
-                                                                                aliquip ex ea commodo consequat...
-                                                                            </p>
-                                                                        </div>
-                                                                        
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-4 col-xl-4 col-md-4 col-sm-12">
-                                                            <div class="listing-card ll-none">
-                                                                <div class="listing-card__box" data-marker="2">
-                                                                    <div class="listing-card__media shine">
-                                                                        <a href="02_listings-grid.#">
-                                                                            <img src="img/mac.jpeg" width="360" height="270" alt="Product Name">
-                                                                        </a>
-                                                                        <div class="listing-btn-action">
-                                                                            <a class="listing-btn-ico view_more_link" href="02_listings-grid.#" data-uk-tooltip="View More" title="" data-aria-describedby="uk-tooltip-0">
-                                                                                <i class="fa-solid fa-eye"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Addto Compare" title="" data-aria-describedby="uk-tooltip-1">
-                                                                                <i class="fa-solid fa-code-compare"></i>
-                                                                                <i class="fa-solid fa-not-equal"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Add to Favorite" title="" data-aria-describedby="uk-tooltip-2">
-                                                                                <i class="fa-regular fa-heart"></i>
-                                                                                <i class="fa-solid fa-heart"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="listing-card__middle">
-                                                                        <div class="listing-card__body">
-                                                                            <div class="body-wrapper">
-                                                                                <div class="title">
-                                                                                    <a href="#">BMW C7 2023</a>
-                                                                                </div>
-                                                                                <div class="price">Tk. 3,250.00</div>
-                                                                            </div>
-                                                                            
-                                                                            <p class="body-text">
-                                                                                Quis nostrud exercitation ullamco laboris nisit
-                                                                                aliquip ex ea commodo consequat...
-                                                                            </p>
-                                                                        </div>
-                                                                       
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        
-
-                                                        <div class="col-4 col-xl-4 col-md-4 col-sm-12 card-bottom">
-                                                            <div class="listing-card ll-none">
-                                                                <div class="listing-card__box" data-marker="3">
-                                                                    <div class="listing-card__media shine">
-                                                                        <a href="02_listings-grid.html">
-                                                                            <img src="img/rice.jpeg" width="360" height="270" alt="Product Name">
-                                                                        </a>
-                                                                        <div class="listing-btn-action">
-                                                                            <a class="listing-btn-ico view_more_link" href="02_listings-grid.html" data-uk-tooltip="View More" title="" data-aria-describedby="uk-tooltip-0">
-                                                                                <i class="fa-solid fa-eye"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Addto Compare" title="" data-aria-describedby="uk-tooltip-1">
-                                                                                <i class="fa-solid fa-code-compare"></i>
-                                                                                <i class="fa-solid fa-not-equal"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Add to Favorite" title="" data-aria-describedby="uk-tooltip-2">
-                                                                                <i class="fa-regular fa-heart"></i>
-                                                                                <i class="fa-solid fa-heart"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="listing-card__middle">
-                                                                        <div class="listing-card__body">
-                                                                            <div class="body-wrapper">
-                                                                                <div class="title">
-                                                                                    <a href="#">Ford Mustang 2023</a>
-                                                                                </div>
-                                                                                <div class="price">Tk. 3,250.00</div>
-            
-                                                                            </div>
-                                                                            
-                                                                            <p class="body-text">
-                                                                                Quis nostrud exercitation ullamco laboris nisit
-                                                                                aliquip ex ea commodo consequat...
-                                                                            </p>
-                                                                        </div>
-                                                                        
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4 col-xl-4 col-md-4 col-sm-12">
-                                                            <div class="listing-card ll-none">
-                                                                <div class="listing-card__box listing-card__box_featured" data-marker="0">
-                                                                    <div class="listing-card__media shine">
-                                                                        <a href="02_listings-grid.#">
-                                                                            <img src="img/wheat.jpeg" width="360" height="270" alt="Product Name">
-                                                                        </a>
-                                                                        
-                                                                        <div class="listing-btn-action">
-                                                                            <a class="listing-btn-ico view_more_link" href="02_listings-grid.#" data-uk-tooltip="View More" title="" data-aria-describedby="uk-tooltip-0">
-                                                                                <i class="fa-solid fa-eye"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Addto Compare" title="" data-aria-describedby="uk-tooltip-1">
-                                                                                <i class="fa-solid fa-code-compare"></i>
-                                                                                <i class="fa-solid fa-not-equal"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Add to Favorite" title="" data-aria-describedby="uk-tooltip-2">
-                                                                                <i class="fa-regular fa-heart"></i>
-                                                                                <i class="fa-solid fa-heart"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="">
-                                                                        <div class="listing-card__body">
-                                                                            <div class="body-wrapper">
-                                                                                <div class="title">
-                                                                                    <a href="#">Bentley Continental GT</a>
-                                                                                </div>
-                                                                                <div class="price">Tk. 3,250.00</div>
-                                                                            </div>
-                                                                            
-                                                                            <p class="body-text">
-                                                                                Quis nostrud exercitation ullamco laboris nisit
-                                                                                aliquip ex ea commodo consequat...
-                                                                            </p>
-                                                                        </div>
-                                                                       
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4 col-xl-4 col-md-4 col-sm-12">
-                                                            <div class="listing-card ll-none">
-                                                                <div class="listing-card__box" data-marker="1">
-                                                                    <div class="listing-card__media shine">
-                                                                        <a href="02_listings-grid.#">
-                                                                            <img src="img/mac.jpeg" width="360" height="270" alt="Product Name">
-                                                                        </a>
-                                                                        <div class="listing-btn-action">
-                                                                            <a class="listing-btn-ico view_more_link" href="02_listings-grid.#" data-uk-tooltip="View More" title="" data-aria-describedby="uk-tooltip-0">
-                                                                                <i class="fa-solid fa-eye"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Addto Compare" title="" data-aria-describedby="uk-tooltip-1">
-                                                                                <i class="fa-solid fa-code-compare"></i>
-                                                                                <i class="fa-solid fa-not-equal"></i>
-                                                                            </a>
-                                                                            <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Add to Favorite" title="" data-aria-describedby="uk-tooltip-2">
-                                                                                <i class="fa-regular fa-heart"></i>
-                                                                                <i class="fa-solid fa-heart"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="listing-card__middle">
-                                                                        <div class="listing-card__body">
-                                                                            <div class="body-wrapper">
-                                                                                <div class="title">
-                                                                                    <a href="#">Jaguar GX 480i </a>
-                                                                                </div>
-                                                                                <div class="price">Tk. 3,250.00</div>
-                                                                                
-                                                                            </div>
-                                                                            <p class="body-text">
-                                                                                Quis nostrud exercitation ullamco laboris nisit
-                                                                                aliquip ex ea commodo consequat...
-                                                                            </p>
-                                                                        </div>
-                                                                        
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        
-
-                                                        
-                                                        
-                                                        
-
-                                                        
-
-                                                        
-
-
-                                                    </div>
-                                                </div>
-            
-            
-                                            </section>
-                                        </main>
-            
-                                    </div>
-                                </div>
-                                
-                            </section>
-                        </main>
-                    </div>
-                    
-                        
                 </div>
-                
-            </section>
-            
-            
-            
-           
-            
-        </main>
-        <footer class="footer footer-bg-color mt-5">
-          <?php include "footer.php"; ?>
-        </footer>
-    </div>
-    <script src="assest/jquery.js"></script>
-    <script src="assest/jquery-migrate-1.2.1.js"></script>
-    <script src="assest/uikit.min.js"></script>
-    <script src="assest/slick.min.js"></script>
-    <script src="assest/modernizr.custom.js"></script>
-    <script src="assest/jquery.dlmenu.js"></script>
-    <script src="assest/bootstrap.js"></script>
-    <script src="assest/custom.js"></script>
-</body>
+            </div>
 
-</html>
+            <?php
+            }
+            }
+            } else {
+                // If no rows are returned, display a "No Data Found" message
+            ?>
+            <div class="col-12">
+                <p>No data found.</p>
+            </div>
+            <?php
+            }
+        }
+            ?>
+        </div>
+    </div>
+
+</section>

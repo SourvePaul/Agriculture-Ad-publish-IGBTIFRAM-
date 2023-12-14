@@ -94,6 +94,7 @@
     <div class="listing__products" id="product_list">
         <div class="row">
             <?php
+
                 $sql = "SELECT * FROM ad_info ORDER BY ad_id DESC LIMIT 10";  
                 $result = $connection->query($sql);
                 $product = 0;

@@ -585,7 +585,7 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
                                                             <img src="img/icons/cat_icon1.png" alt="icon_img"
                                                                 height="20px;" width="20px;"
                                                                 style=" margin-left: 15px; margin-top: 5px;">
-                                                            <a href="<?php echo $row['cat_id']; ?>"><?php echo $row['cat_name']; ?>
+                                                            <a href="category.php?cat_id=<?php echo $row['cat_id']; ?>"><?php echo $row['cat_name']; ?>
                                                             </a>
 
                                                             <ul class="second">
@@ -594,7 +594,8 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
                                                                     $result2 = $connection->query($sql2);
                                                                     while($row2 = $result2->fetch_assoc())  {  
                                                                 ?>
-                                                                <li><a href="<?php echo $row2['sub_cat_id']; ?>">
+                                                                <li><a
+                                                                        href="sub_category.php?sub_cat_id=<?php echo $row2['sub_cat_id']; ?>">
                                                                         <?php echo $row2['sub_cat_name']; ?></a>
                                                                 </li>
                                                                 <?php } ?>
@@ -627,7 +628,9 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
                                         </aside>
 
                                         <main class="main col-md-4 col-lg-8 col-xl-8" style="margin-left: -65px;">
-                                            <?php include "main_products.php"; ?>
+                                            <?php
+                                            include "main_products.php";
+                                            ?>
                                         </main>
 
                                     </div>
