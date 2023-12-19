@@ -10,7 +10,7 @@
                     <a href="about.#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="li" class="menu-link main-menu-link item-title">All Adds</a>
+                    <a href="li" class="menu-link main-menu-link item-title">All Ads</a>
                 </li>
                 <li>
                     <a href="news.php">News</a>
@@ -58,7 +58,7 @@
                     </li>
                     <li class="line__v">|</li>
                     <li>
-                        <a href="#">All Adds</a>
+                        <a href="#">All Ads</a>
                     </li>
                     <li class="line__v">|</li>
                     <li>
@@ -87,10 +87,12 @@
                     </li>
                     <?php } ?>
                 </ul>
+
                 <button class="button_sell btn-lg float-right" type="submit"
                     style="background-color: #8a288f; width: 120px; border:none; margin: 26px 10px; height: 45px;color: #fff;">
                     <a href="postad.php" style="color:#fff; text-decoration:none;">Sell</a>
                 </button>
+
             </div>
         </div>
     </header>
