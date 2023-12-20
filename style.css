@@ -5221,9 +5221,9 @@ html .nav-pills .nav-link {
     text-decoration: none;
 }
 
-.page-register .box-form .form input~div:not(:last-child) label {
+/* .page-register .box-form .form input~div:not(:last-child) label {
     margin-right: 278px;
-}
+} */
 
 .page-register .box-form .form .link__template {
     max-width: 100%;
@@ -8814,7 +8814,7 @@ form {
 }
 
 #main-content .post-content .post-img:hover {
-    border: 3px solid #1e90ff;
+    border: 3px solid #00b53f;
 }
 
 #main-content .post-content .inner-content {
@@ -8830,7 +8830,7 @@ form {
 }
 
 #main-content .post-content h3 a {
-    color: #1e90ff;
+    color: #00b53f;
     transition: all 0.3s;
 }
 
@@ -8847,7 +8847,7 @@ form {
 }
 
 #main-content .post-content .post-information i {
-    color: #1e90ff;
+    color: #8a288f;
     margin-right: 1px;
 }
 
@@ -8871,7 +8871,7 @@ form {
 
 #main-content .post-content a.read-more {
     color: #fff;
-    background-color: #1E90FF;
+    background-color: #8a288f;
     font-size: 12px;
     text-transform: capitalize;
     padding: 3px 8px;
@@ -8891,7 +8891,7 @@ form {
 }
 
 #main-content .single-post h3 {
-    color: #1e90ff;
+    color: #00b53f;
 }
 
 #main-content .single-post .post-information {
@@ -8923,7 +8923,7 @@ form {
 
 .pagination li a {
     border: none;
-    background: #1e90ff;
+    background: #00b53f;
     color: #fff;
 }
 
@@ -8966,7 +8966,7 @@ i.fa {
     text-transform: uppercase;
     padding: 0 0 0 5px;
     margin: 0 0 21px;
-    border-left: 3px solid #1e90ff;
+    border-left: 3px solid #00b53f;
 }
 
 #sidebar .search-box-container {
@@ -8993,8 +8993,8 @@ i.fa {
     font-weight: 600;
     text-transform: uppercase;
     padding: 6px 8px;
-    background-color: #1E90FF;
-    border-color: #1E90FF;
+    background-color: #00b53f;
+    border-color: #00b53f;
     outline: none;
 }
 
@@ -9037,7 +9037,7 @@ i.fa {
 }
 
 #sidebar .recent-post .post-img:hover {
-    border: 3px solid #1e90ff;
+    border: 3px solid #1ed910;
 }
 
 #sidebar .recent-post .post-img img {
@@ -9059,7 +9059,7 @@ i.fa {
 }
 
 #sidebar .recent-post h5 a {
-    color: #1E90FF;
+    color: #00b53f;
 }
 
 #sidebar .recent-post span {
@@ -9074,7 +9074,7 @@ i.fa {
 }
 
 #sidebar .recent-post span i {
-    color: #1E90FF;
+    color: #8a288f;
 }
 
 #sidebar .recent-post a.read-more {

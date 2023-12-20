@@ -7,7 +7,7 @@ $isLoggedIn = false;
 
 // Check if the session variable is set and user is logged in
 if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
-    $username = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : '';
+    $author = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : '';
     $isLoggedIn = true;
 }
 ?>
@@ -41,247 +41,230 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
 
         <main class="main">
             <div class="container__1620">
-                <!-- <div class="col-12 col-xl-12 col-md-12 col-sm-12 blog_listing_box">
-                    <div class="row no-gutters">
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 listing__blogs__image">
-                            <img src="igbtadmin/images/blog/1.jpg" alt="1" class="card-img" width="360">
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, saepe.</p>
-                                </h5>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid
-                                    error, quam ipsam, eum quis dolorem suscipit libero, aut magni tempore reiciendis
-                                    omnis
-                                    nihil. Sunt?</p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
                 <div id="main-content">
                     <div class="container">
                         <div class="row">
                             <div class="col-6 col-sm-6 col-md-8 col-xl-8">
-                                <div class="post-content">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <a class="post-img" href="">
-                                                <img src="igbtadmin/images/blog/1.jpg" alt="1">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="inner-content clearfix">
-                                                <h3><a href="">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                        elit.</a></h3>
-                                                <div class="post-information">
-                                                    <span>
-                                                        <i class="fa fa-tags" aria-hidden="true"></i>
-                                                        <a href="#">category name</a>
-                                                    </span>
-                                                    <span>
-                                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                                        <a href="#">username</a>
-                                                    </span>
-                                                    <span>
-                                                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        date
-                                                    </span>
+                                <div class="post-container">
+
+                                    <div class="post-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <a class="post-img" href="">
+                                                    <img src="igbtadmin/images/blog/1.jpg" alt="1">
+                                                </a>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="inner-content clearfix">
+                                                    <h3><a href="">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                            elit.</a></h3>
+                                                    <div class="post-information">
+                                                        <span>
+                                                            <i class="fa fa-tags" aria-hidden="true"></i>
+                                                            <a href="#">cat_name</a>
+                                                        </span>
+                                                        <span>
+                                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                                            <a href="#">author</a>
+                                                        </span>
+                                                        <span>
+                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                            date
+                                                        </span>
+                                                    </div>
+                                                    <p class="description">
+                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
+                                                        voluptas,
+                                                        qui velit dolore alias quae vel itaque beatae, animi laborum sit
+                                                        molestiae?
+                                                    </p>
+                                                    <a class="read-more pull-right" href="#">read more</a>
                                                 </div>
-                                                <p class="description">
-                                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
-                                                    voluptas,
-                                                    qui velit dolore alias quae vel itaque beatae, animi laborum sit
-                                                    molestiae?
-                                                </p>
-                                                <a class="read-more pull-right" href="#">read more</a>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="post-content">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <a class="post-img" href="">
-                                                <img src="igbtadmin/images/blog/1.jpg" alt="1">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="inner-content clearfix">
-                                                <h3><a href="">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                        elit.</a></h3>
-                                                <div class="post-information">
-                                                    <span>
-                                                        <i class="fa fa-tags" aria-hidden="true"></i>
-                                                        <a href="#">category name</a>
-                                                    </span>
-                                                    <span>
-                                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                                        <a href="#">username</a>
-                                                    </span>
-                                                    <span>
-                                                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        date
-                                                    </span>
+                                    <div class="post-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <a class="post-img" href="">
+                                                    <img src="igbtadmin/images/blog/2.jpg" alt="1">
+                                                </a>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="inner-content clearfix">
+                                                    <h3><a href="">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                            elit.</a></h3>
+                                                    <div class="post-information">
+                                                        <span>
+                                                            <i class="fa fa-tags" aria-hidden="true"></i>
+                                                            <a href="#">cat_name</a>
+                                                        </span>
+                                                        <span>
+                                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                                            <a href="#">author</a>
+                                                        </span>
+                                                        <span>
+                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                            date
+                                                        </span>
+                                                    </div>
+                                                    <p class="description">
+                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
+                                                        voluptas,
+                                                        qui velit dolore alias quae vel itaque beatae, animi laborum sit
+                                                        molestiae?
+                                                    </p>
+                                                    <a class="read-more pull-right" href="#">read more</a>
                                                 </div>
-                                                <p class="description">
-                                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
-                                                    voluptas,
-                                                    qui velit dolore alias quae vel itaque beatae, animi laborum sit
-                                                    molestiae?
-                                                </p>
-                                                <a class="read-more pull-right" href="#">read more</a>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="post-content">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <a class="post-img" href="">
-                                                <img src="igbtadmin/images/blog/1.jpg" alt="1">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="inner-content clearfix">
-                                                <h3><a href="">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                        elit.</a></h3>
-                                                <div class="post-information">
-                                                    <span>
-                                                        <i class="fa fa-tags" aria-hidden="true"></i>
-                                                        <a href="#">category name</a>
-                                                    </span>
-                                                    <span>
-                                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                                        <a href="#">username</a>
-                                                    </span>
-                                                    <span>
-                                                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        date
-                                                    </span>
+                                    <div class="post-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <a class="post-img" href="">
+                                                    <img src="igbtadmin/images/blog/3.jpg" alt="1">
+                                                </a>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="inner-content clearfix">
+                                                    <h3><a href="">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                            elit.</a></h3>
+                                                    <div class="post-information">
+                                                        <span>
+                                                            <i class="fa fa-tags" aria-hidden="true"></i>
+                                                            <a href="#">cat_name</a>
+                                                        </span>
+                                                        <span>
+                                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                                            <a href="#">author</a>
+                                                        </span>
+                                                        <span>
+                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                            date
+                                                        </span>
+                                                    </div>
+                                                    <p class="description">
+                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
+                                                        voluptas,
+                                                        qui velit dolore alias quae vel itaque beatae, animi laborum sit
+                                                        molestiae?
+                                                    </p>
+                                                    <a class="read-more pull-right" href="#">read more</a>
                                                 </div>
-                                                <p class="description">
-                                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
-                                                    voluptas,
-                                                    qui velit dolore alias quae vel itaque beatae, animi laborum sit
-                                                    molestiae?
-                                                </p>
-                                                <a class="read-more pull-right" href="#">read more</a>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="post-content">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <a class="post-img" href="">
-                                                <img src="igbtadmin/images/blog/1.jpg" alt="1">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="inner-content clearfix">
-                                                <h3><a href="">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                        elit.</a></h3>
-                                                <div class="post-information">
-                                                    <span>
-                                                        <i class="fa fa-tags" aria-hidden="true"></i>
-                                                        <a href="#">category name</a>
-                                                    </span>
-                                                    <span>
-                                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                                        <a href="#">username</a>
-                                                    </span>
-                                                    <span>
-                                                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        date
-                                                    </span>
+                                    <div class="post-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <a class="post-img" href="">
+                                                    <img src="igbtadmin/images/blog/4.jpg" alt="1">
+                                                </a>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="inner-content clearfix">
+                                                    <h3><a href="">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                            elit.</a></h3>
+                                                    <div class="post-information">
+                                                        <span>
+                                                            <i class="fa fa-tags" aria-hidden="true"></i>
+                                                            <a href="#">cat_name</a>
+                                                        </span>
+                                                        <span>
+                                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                                            <a href="#">author</a>
+                                                        </span>
+                                                        <span>
+                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                            date
+                                                        </span>
+                                                    </div>
+                                                    <p class="description">
+                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
+                                                        voluptas,
+                                                        qui velit dolore alias quae vel itaque beatae, animi laborum sit
+                                                        molestiae?
+                                                    </p>
+                                                    <a class="read-more pull-right" href="#">read more</a>
                                                 </div>
-                                                <p class="description">
-                                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
-                                                    voluptas,
-                                                    qui velit dolore alias quae vel itaque beatae, animi laborum sit
-                                                    molestiae?
-                                                </p>
-                                                <a class="read-more pull-right" href="#">read more</a>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="post-content">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <a class="post-img" href="">
-                                                <img src="igbtadmin/images/blog/1.jpg" alt="1">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="inner-content clearfix">
-                                                <h3><a href="">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                        elit.</a></h3>
-                                                <div class="post-information">
-                                                    <span>
-                                                        <i class="fa fa-tags" aria-hidden="true"></i>
-                                                        <a href="#">category name</a>
-                                                    </span>
-                                                    <span>
-                                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                                        <a href="#">username</a>
-                                                    </span>
-                                                    <span>
-                                                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        date
-                                                    </span>
+                                    <div class="post-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <a class="post-img" href="">
+                                                    <img src="igbtadmin/images/blog/5.jpg" alt="1">
+                                                </a>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="inner-content clearfix">
+                                                    <h3><a href="">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                            elit.</a></h3>
+                                                    <div class="post-information">
+                                                        <span>
+                                                            <i class="fa fa-tags" aria-hidden="true"></i>
+                                                            <a href="#">cat_name</a>
+                                                        </span>
+                                                        <span>
+                                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                                            <a href="#">author</a>
+                                                        </span>
+                                                        <span>
+                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                            date
+                                                        </span>
+                                                    </div>
+                                                    <p class="description">
+                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
+                                                        voluptas,
+                                                        qui velit dolore alias quae vel itaque beatae, animi laborum sit
+                                                        molestiae?
+                                                    </p>
+                                                    <a class="read-more pull-right" href="#">read more</a>
                                                 </div>
-                                                <p class="description">
-                                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
-                                                    voluptas,
-                                                    qui velit dolore alias quae vel itaque beatae, animi laborum sit
-                                                    molestiae?
-                                                </p>
-                                                <a class="read-more pull-right" href="#">read more</a>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="post-content">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <a class="post-img" href="">
-                                                <img src="igbtadmin/images/blog/1.jpg" alt="1">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="inner-content clearfix">
-                                                <h3><a href="">Lorem ipsum dolor sit amet consectetur adipisicing
-                                                        elit.</a></h3>
-                                                <div class="post-information">
-                                                    <span>
-                                                        <i class="fa fa-tags" aria-hidden="true"></i>
-                                                        <a href="#">category name</a>
-                                                    </span>
-                                                    <span>
-                                                        <i class="fa fa-user" aria-hidden="true"></i>
-                                                        <a href="#">username</a>
-                                                    </span>
-                                                    <span>
-                                                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        date
-                                                    </span>
+                                    <div class="post-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <a class="post-img" href="">
+                                                    <img src="igbtadmin/images/blog/6.jpg" alt="1">
+                                                </a>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="inner-content clearfix">
+                                                    <h3><a href="">Lorem ipsum dolor sit amet consectetur adipisicing
+                                                            elit.</a></h3>
+                                                    <div class="post-information">
+                                                        <span>
+                                                            <i class="fa fa-tags" aria-hidden="true"></i>
+                                                            <a href="#">cat_name</a>
+                                                        </span>
+                                                        <span>
+                                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                                            <a href="#">author</a>
+                                                        </span>
+                                                        <span>
+                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                            date
+                                                        </span>
+                                                    </div>
+                                                    <p class="description">
+                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
+                                                        voluptas,
+                                                        qui velit dolore alias quae vel itaque beatae, animi laborum sit
+                                                        molestiae?
+                                                    </p>
+                                                    <a class="read-more pull-right" href="#">read more</a>
                                                 </div>
-                                                <p class="description">
-                                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
-                                                    voluptas,
-                                                    qui velit dolore alias quae vel itaque beatae, animi laborum sit
-                                                    molestiae?
-                                                </p>
-                                                <a class="read-more pull-right" href="#">read more</a>
                                             </div>
                                         </div>
                                     </div>
@@ -308,7 +291,7 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
                                     <h4>Recent Posts</h4>
                                     <div class="recent-post">
                                         <a class="post-img" href="#">
-                                            <img src="igbtadmin/images/blog/1.jpg" alt="r1" />
+                                            <img src="igbtadmin/images/blog/7.jpg" alt="r1" />
                                         </a>
                                         <div class="post-content">
                                             <h5>
@@ -317,15 +300,21 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
                                                     suscipit!</a>
                                             </h5>
                                             <span>
-                                                <i class="fa fa-tags" aria-hidden="true">category name</i>
-                                                <a href='#'></a>
+                                                <i class="fa fa-tags" aria-hidden="true"></i>
+                                                <a href='#'>cat_name</a>
                                             </span>
                                             <span>
-                                                <i class="fa fa-calendar" aria-hidden="true">Date</i>
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                date
                                             </span>
                                             <a class="read-more" href="#">read more</a>
                                         </div>
+                                    </div>
 
+                                    <div class="recent-post">
+                                        <a class="post-img" href="#">
+                                            <img src="igbtadmin/images/blog/8.jpg" alt="r1" />
+                                        </a>
                                         <div class="post-content">
                                             <h5>
                                                 <a href='#'>Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -333,15 +322,21 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
                                                     suscipit!</a>
                                             </h5>
                                             <span>
-                                                <i class="fa fa-tags" aria-hidden="true">category name</i>
-                                                <a href='#'></a>
+                                                <i class="fa fa-tags" aria-hidden="true"></i>
+                                                <a href='#'>cat_name</a>
                                             </span>
                                             <span>
-                                                <i class="fa fa-calendar" aria-hidden="true">Date</i>
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                date
                                             </span>
                                             <a class="read-more" href="#">read more</a>
                                         </div>
+                                    </div>
 
+                                    <div class="recent-post">
+                                        <a class="post-img" href="#">
+                                            <img src="igbtadmin/images/blog/9.jpg" alt="r1" />
+                                        </a>
                                         <div class="post-content">
                                             <h5>
                                                 <a href='#'>Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -349,11 +344,12 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
                                                     suscipit!</a>
                                             </h5>
                                             <span>
-                                                <i class="fa fa-tags" aria-hidden="true">category name</i>
-                                                <a href='#'></a>
+                                                <i class="fa fa-tags" aria-hidden="true"></i>
+                                                <a href='#'>cat_name</a>
                                             </span>
                                             <span>
-                                                <i class="fa fa-calendar" aria-hidden="true">Date</i>
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                date
                                             </span>
                                             <a class="read-more" href="#">read more</a>
                                         </div>

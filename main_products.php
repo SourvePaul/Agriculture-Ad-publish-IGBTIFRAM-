@@ -72,17 +72,15 @@
             <div class="container-bottom" style="padding: 25px 0px;">
                 <div class="b-main-page__banners_block__banner">
                     <div class="b-post-advert-banner b-main-page__post-advert-banner">
-                        <p class="b-post-advert-banner__heading">Got
-                            something
-                            to sell</p>
+                        <p class="b-post-advert-banner__heading">Got something to sell</p>
 
-                        <button aria-label="Post ad" class="b-post-advert-banner__button">
+                        <button onclick="location.href = 'postad.php'" aria-label="Post ad"
+                            class="b-post-advert-banner__button">
+                            <!-- location.href='postad.php' -->
                             <div class="b-post-advert-banner__button_inner">
                                 <div>
                         </button>
-                        <p class="b-post-advert-banner__bottom-text">Post an
-                            advert
-                            for free</p>
+                        <p class="b-post-advert-banner__bottom-text">Post an advert for free</p>
                     </div>
                 </div>
             </div>
@@ -113,8 +111,11 @@
             <div class="col-12 col-xl-12 col-md-12 col-sm-12 listing__products__box">
                 <div class="row no-gutters">
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 listing__products__image">
-                        <img src="igbtadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
-                            alt="<?php echo $row['ad_id']; ?>" class="card-img" width="360">
+                        <a href="#">
+                            <img src="igbtadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
+                                alt="<?php echo $row['ad_id']; ?>" class="card-img" width="360">
+                        </a>
+
                         <?php 
                         if ($counter <= 2) {
                         ?>
@@ -133,6 +134,7 @@
                         } 
                         ?>
                     </div>
+
 
                     <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
                         <div class="card-body">

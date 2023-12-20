@@ -128,6 +128,14 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
     <script src="assest/slider.js"></script>
     <script src="assest/custom.js"></script>
 
+    <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const logout = urlParams.get('logout');
+
+    if (logout) {
+        alert('You need to sign in first.');
+    }
+    </script>
 
 </body>
 

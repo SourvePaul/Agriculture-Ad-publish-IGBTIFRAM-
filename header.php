@@ -20,12 +20,23 @@
                 </li>
             </ul>
         </div>
+        <?php
+        if($isLoggedIn) { 
+        ?>
+        <a class="mobile-logo-img" href="#">
+            <img src="img/png/logo.png" alt="logo" width="150" height="45">
+        </a>
+        <div class="m-login">
+            <a href="#"><?php echo $username; ?></a>
+        </div>
+        <?php } else { ?>
         <a class="mobile-logo-img" href="signin.php">
             <img src="img/png/logo.png" alt="logo" width="150" height="45">
         </a>
         <div class="m-login">
             <a href="signin.php"><i class="icon-user icons"></i><span>LOGIN</span></a>
         </div>
+        <?php } ?>
     </div>
     <header class="fl-header fl-header-single fl-header-type1">
         <!-- style="margin-top: -25px; -->
@@ -64,10 +75,11 @@
                     <li>
                         <a href="news.php">News</a>
                     </li>
-                    <li class="line__v">|</li>
+
                     <?php
                     if($isLoggedIn) { 
                     ?>
+                    <li class="line__v">|</li>
                     <li>
                         <a href="#"><i class="icon-user icons"></i> <?php echo $username; ?></a>
                     </li>
