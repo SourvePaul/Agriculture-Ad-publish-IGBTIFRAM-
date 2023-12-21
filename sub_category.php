@@ -176,14 +176,14 @@ require_once('db_connect.php');
                 
             ?>
             <div class="col-12">
-                <!-- <p style="color:red; margin:0px auto;"> No products found for this category. </p> -->
+                <h1 style="margin:0px auto;"> No products found for this sub_category... </h1>
 
-                <script>
+                <!-- <script>
                 // Display an alert message
                 alert('No products found for this sub_category.');
                 // Redirect to the index page after the alert is dismissed
                 window.location.href = 'index.php'; // Replace 'index.php' with your index page URL
-                </script>
+                </script> -->
             </div>
 
             <?php
