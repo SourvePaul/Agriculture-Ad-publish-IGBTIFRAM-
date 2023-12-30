@@ -65,6 +65,12 @@ if ($result->num_rows > 0) {
                             <a href="#">support@iGbetiFarm</a>
                         </li>
                         <li>
+                            <a href="#">info@igbetifarm.com</a>
+                        </li>
+                        <li>
+                            <a href="#">inquiry@igbetifarm.com</a>
+                        </li>
+                        <li>
                             <a href="#">Safety tips</a>
                         </li>
                         <li>

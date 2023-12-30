@@ -1,6 +1,7 @@
 <section class="content">
     <div class="row" id="main_slider_post_button">
-        <div class="col-md-8">
+
+        <div class="col-12 col-sm-12 col-md-8">
             <div class="container-slide slider_do" style="padding: 26px 0px;">
                 <?php
                  function make_query($connection) {
@@ -34,7 +35,7 @@
                     }else {
                     $output.= '<div class="item">';
                     } /* <h3>"Hello"</h3>*/
-                    $output.= '<img src="igbtadmin/images/banner/'.$row["banner_img"].'" alt="banner_img"/ style="height: 215px;">
+                    $output.= '<img src="igbtadmin/images/banner/'.$row["banner_img"].'" alt="banner_img"/ style="height: 215px; width:100%;">
                     <div class="carousel-caption">
                                                                                             
                         </div>
@@ -66,9 +67,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="col-md-4">
+
+        <div class="col-12 col-sm-12 col-md-4">
             <div class="container-bottom" style="padding: 25px 0px;">
                 <div class="b-main-page__banners_block__banner">
                     <div class="b-post-advert-banner b-main-page__post-advert-banner">
@@ -85,6 +86,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
     <h3 class="listing__products__title ">Trending ads</h3>

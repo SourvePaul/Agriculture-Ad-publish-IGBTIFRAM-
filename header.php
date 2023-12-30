@@ -10,7 +10,7 @@
                     <a href="about.#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="li" class="menu-link main-menu-link item-title">All Ads</a>
+                    <a href="all_ads.php" class="menu-link main-menu-link item-title">All Ads</a>
                 </li>
                 <li>
                     <a href="news.php">News</a>
@@ -69,7 +69,7 @@
                     </li>
                     <li class="line__v">|</li>
                     <li>
-                        <a href="#">All Ads</a>
+                        <a href="all_ads.php">All Ads</a>
                     </li>
                     <li class="line__v">|</li>
                     <li>
