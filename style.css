@@ -9088,6 +9088,20 @@ i.fa {
     transition: all 0.3s;
 }
 
+.main .first__screen .col-md-12 h6 button:hover {
+    color: black;
+    background-color: white;
+    border: none;
+    opacity: 1;
+}
+
+.main .first__screen .col-md-12 h6 button:focus {
+    color: black;
+    background-color: white;
+    border: none;
+}
+
+
 #sidebar .recent-post a.read-more:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }

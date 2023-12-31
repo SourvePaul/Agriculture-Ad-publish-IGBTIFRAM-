@@ -203,7 +203,7 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <div class="modal_left_title">
-                                                    <p>All Nigeria • 1 907 128 Ads</p>
+                                                    <!-- <p>All Nigeria • 12 Ads</p> -->
                                                 </div>
                                                 <div class="modal_right_title">
 
