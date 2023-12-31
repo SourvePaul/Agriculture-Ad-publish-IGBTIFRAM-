@@ -113,7 +113,7 @@
             <div class="col-12 col-xl-12 col-md-12 col-sm-12 listing__products__box">
                 <div class="row no-gutters">
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 listing__products__image">
-                        <a href="#">
+                        <a href="add.php?ad_id=<?php echo $row['ad_id']; ?>">
                             <img src="igbtadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
                                 alt="<?php echo $row['ad_id']; ?>" class="card-img" width="360">
                         </a>
@@ -141,7 +141,9 @@
                     <div class="col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <?php echo $row['ad_title']; ?></h5>
+                                <a href="add.php?ad_id=<?php echo $row['ad_id']; ?>"
+                                    style="text-decoration:none; color:black; font-weight:bold;"><?php echo $row['ad_title']; ?></a>
+                            </h5>
                             <p class="card-text">
                                 <?php echo $row['ad_description']; ?></p>
                             <p class="card-text"><small class="text-muted">Last updated 3 mins
@@ -158,14 +160,15 @@
                 <div class="listing-card ll-none">
                     <div class="listing-card__box listing-card__box_featured" data-marker="0">
                         <div class="listing-card__media shine">
-                            <a href="02_listings-grid.#">
+                            <a href="add.php?ad_id=<?php echo $row['ad_id']; ?>">
                                 <img src="igbtadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
                                     alt="<?php echo $row['ad_id']; ?>" width="360" height="200">
                             </a>
 
                             <div class="listing-btn-action">
-                                <a class="listing-btn-ico view_more_link" href="02_listings-grid.#"
-                                    data-uk-tooltip="View More" title="" data-aria-describedby="uk-tooltip-0">
+                                <a class="listing-btn-ico view_more_link"
+                                    href="add.php?ad_id=<?php echo $row['ad_id']; ?>" data-uk-tooltip="View More"
+                                    title="" data-aria-describedby="uk-tooltip-0">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                                 <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Add to Compare"
@@ -188,8 +191,8 @@
                                     <a href="#"></a>
                                     </div> -->
                                     <div class="title">
-                                        <a href="#" data-bs-toggle="tooltip" data-bs-placement="top"
-                                            title="<?php echo $row['ad_title']; ?>">
+                                        <a href="add.php?ad_id=<?php echo $row['ad_id']; ?>" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="<?php echo $row['ad_title']; ?>">
                                             <?php
                                                 $title = $row['ad_title'];
                                                 $words = explode(' ', $title); // Split the string into an array of words

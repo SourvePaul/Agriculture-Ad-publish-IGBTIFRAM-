@@ -203,7 +203,20 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <div class="modal_left_title">
-                                                    <!-- <p>All Nigeria • 12 Ads</p> -->
+                                                    <p>
+                                                        <?php
+                                                        // Perform a query to count the number of ads in ad_info
+                                                        $countQuery = "SELECT COUNT(*) AS ad_count FROM ad_info";
+                                                        $countResult = $connection->query($countQuery);
+
+                                                        if ($countResult) {
+                                                            $adCount = $countResult->fetch_assoc()['ad_count'];
+                                                            echo '<p>All Nigeria • ' . $adCount . ' Ads</p>';
+                                                        } else {
+                                                            echo '<p>All Nigeria 0 Ads</p>';
+                                                        }
+                                                        ?>
+                                                    </p>
                                                 </div>
                                                 <div class="modal_right_title">
 
@@ -535,11 +548,13 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
                             </h6>
 
                             <div class="search-main" style="margin-top: 35px;">
-                                <input type="text" class="input-search" placeholder="I am looking for ..." name="" />
-                                <button type="submit" name="" class="button_search">
+                                <input type="text" class="input-search" placeholder="I am looking for ..." name="search"
+                                    id="search" />
+                                <button type="submit" name="" class="button_search" onclick="searchData()">
                                     <i class="fa fa-search fa-icon"></i>
                                 </button>
                             </div>
+                            <div id="searchResults"></div>
                         </div>
                     </div>
 
@@ -636,8 +651,10 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
                                                 include "category.php";
                                             } elseif (isset($_GET['sub_cat_id'])) {
                                                 include "sub_category.php";
-                                            } else {
-                                                // If no category is selected, show the default content (main_products.php content)
+                                            } elseif (isset($_GET['query'])) {
+                                                include "search.php";
+                                            }
+                                             else {
                                                 include "main_products.php";
                                             }
                                             ?>
@@ -665,6 +682,27 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
     <script src="assest/jquery.dlmenu.js"></script>
     <script src="assest/bootstrap.js"></script>
     <script src="assest/custom.js"></script>
+    <script>
+    function searchData() {
+        var searchQuery = $('#search').val(); // Get the search query from the input field
+
+        $.ajax({
+            type: 'POST', // Use POST or GET based on your server-side handling
+            url: 'search.php', // Replace 'search.php' with your server-side script handling the search
+            data: {
+                query: searchQuery
+            }, // Send the search query to the server
+            success: function(response) {
+                // Handle the response from the server
+                $('#searchResults').html(response); // Update the search results in the 'searchResults' div
+            },
+            error: function(xhr, status, error) {
+                // Handle errors if any
+                console.error(xhr.responseText);
+            }
+        });
+    }
+    </script>
 
 </body>
 
