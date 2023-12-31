@@ -11024,6 +11024,19 @@ i.fa {
 }
 
 @media screen and (max-width: 560px) {
+
+    #main_slider_post_button .col-md-8 .slider_do .b-main-page__banners_block__sliders {
+        height: 200px;
+    }
+
+    #main_slider_post_button .col-md-8 .slider_do .b-main-page__banners_block__sliders .carousel slide {
+        height: 200px;
+    }
+
+    #main_slider_post_button .col-md-8 .slider_do .b-main-page__banners_block__sliders .carousel slide .carousel-inner {
+        height: 200px;
+    }
+
     .main .aside .aside__box_menu .first {
         width: 45%;
         height: 113px;
