@@ -105,9 +105,9 @@ if (isset($_SESSION['user_email'])) {
                                                 <?php } ?>
                                             </select>
                                         </div>
-                                        <label style="padding: 8px 0px; font-weight:bold;">Sub-Category</label>
+                                        <!-- <label style="padding: 8px 0px; font-weight:bold;">Sub-Category</label>
                                         <select class="form-control " name="sub_cat_id" id="subcategory-select">
-                                        </select>
+                                        </select> -->
                                         <br>
 
                                         <div class="form-group" style="padding: 5px 1px;">
@@ -125,9 +125,45 @@ if (isset($_SESSION['user_email'])) {
                                         <div class="form-group" style="padding: 5px 1px;">
                                             <label for="exampleInputAdLocation"
                                                 style="padding: 8px 0px; font-weight:bold;">Ad-Location</label>
-                                            <input type="text" class="form-control" id="exampleInputAdLocation"
-                                                name="ad_location" required>
+                                            <select class="form-control select2" name="ad_location"
+                                                id="exampleInputAdLocation" required>
+                                                <option value="">---Select any state---</option>
+                                                <option value="">---Abuja (FCT)---</option>
+                                                <option value="">---Lagos State---</option>
+                                                <option value="">---Ogun State---</option>
+                                                <option value="">---Oyo State---</option>
+                                                <option value="">---Rivers State---</option>
+                                                <option value="">---Abia State---</option>
+                                                <option value="">---Adamawa State---</option>
+                                                <option value="">---Akwa Ibom State---</option>
+                                                <option value="">---Anambra State---</option>
+                                                <option value="">---Bauchi State---</option>
+                                                <option value="">---Bayelsa State---</option>
+                                                <option value="">---Benue State---</option>
+                                                <option value="">---Cross River State---</option>
+                                                <option value="">---Delta State---</option>
+                                                <option value="">---Ebonyi State---</option>
+                                                <option value="">---Edo State---</option>
+                                                <option value="">---Ekiti State---</option>
+                                                <option value="">---Enugu State---</option>
+                                                <option value="">---Gombe State---</option>
+                                                <option value="">---Jigawa State---</option>
+                                                <option value="">---Kaduna State---</option>
+                                                <option value="">---Kano State---</option>
+                                                <option value="">---Katsina State---</option>
+                                                <option value="">---Kogi State---</option>
+                                                <option value="">---Kwara State---</option>
+                                                <option value="">---Nasarawa State---</option>
+                                                <option value="">---Niger State---</option>
+                                                <option value="">---Ondo State---</option>
+                                                <option value="">---Plateau State---</option>
+                                                <option value="">---Sokoto State---</option>
+                                                <option value="">---Taraba State---</option>
+                                                <option value="">---Yobe State---</option>
+                                                <option value="">---Zamfara State---</option>
+                                            </select>
                                         </div>
+
                                         <div class="form-group" style="padding: 5px 1px;">
                                             <label style="padding: 8px 0px; font-weight:bold;">User</label>
                                             <select class="form-control select2" name="user_id">
