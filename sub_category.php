@@ -16,7 +16,7 @@ require_once('db_connect.php');
                  $output = '';
                  $count = 0;
                  $result = make_query($connection);
-                 while($row = mysqli_fetch_array($result)) {
+                 while($ads_row = mysqli_fetch_array($result)) {
                     if($count == 0) {
                     $output .= '<li data-target="#dynamic_slide_show" data-slide-to="'.$count.'" class="active"></li>';
                     } else {
@@ -116,14 +116,15 @@ require_once('db_connect.php');
                 <div class="listing-card ll-none">
                     <div class="listing-card__box listing-card__box_featured" data-marker="0">
                         <div class="listing-card__media shine">
-                            <a href="02_listings-grid.#">
+                            <a href="add.php?ad_id=<?php echo $ads_row['ad_id']; ?>">
                                 <img src="igbtadmin/images/advertisement/<?php echo $ads_row['ad_feature_image']; ?>"
                                     alt="<?php echo $ads_row['ad_id']; ?>" width="360" height="200">
                             </a>
 
                             <div class="listing-btn-action">
-                                <a class="listing-btn-ico view_more_link" href="02_listings-grid.#"
-                                    data-uk-tooltip="View More" title="" data-aria-describedby="uk-tooltip-0">
+                                <a class="listing-btn-ico view_more_link"
+                                    href="add.php?ad_id=<?php echo $ads_row['ad_id']; ?>" data-uk-tooltip="View More"
+                                    title="" data-aria-describedby="uk-tooltip-0">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>
                                 <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Add to Compare"
@@ -143,7 +144,8 @@ require_once('db_connect.php');
                             <div class="listing-card__body">
                                 <div class="body-wrapper">
                                     <div class="title">
-                                        <a href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                                        <a href="add.php?ad_id=<?php echo $ads_row['ad_id']; ?>"
+                                            data-bs-toggle="tooltip" data-bs-placement="top"
                                             title="<?php echo $ads_row['ad_title']; ?>">
                                             <?php
                                                 $title = $ads_row['ad_title'];

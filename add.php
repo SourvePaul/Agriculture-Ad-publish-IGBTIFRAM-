@@ -41,6 +41,28 @@ $result = mysqli_query($connection, $sql) or die("Query failed from users.");
     <link rel="stylesheet" href="fonts/font-awesome/css/all.min.css">
     <link rel="stylesheet" href="fonts/icomoon2/style.css">
     <link rel="stylesheet" href="fonts/icomoon1/style.css">
+    <style>
+    .aside__hours-work ul {
+        padding-left: 20px;
+    }
+
+    .aside__hours-work ul li::before {
+        content: "\2022";
+        /* Unicode character for bullet point */
+        color: #42BC35;
+        /* Color of the bullet point */
+        font-size: 20px;
+        /* Adjust the size of the bullet point */
+        margin-right: 8px;
+        /* Space between bullet point and text */
+    }
+
+    .aside__hours-work ul li {
+        margin-bottom: 10px;
+        line-height: 1.5;
+        /* Adjust the spacing between lines */
+    }
+    </style>
 </head>
 
 <body>
@@ -335,7 +357,7 @@ $result = mysqli_query($connection, $sql) or die("Query failed from users.");
                                         call back</a>
 
                                     <a type="button" class="btn btn-outline-success"
-                                        href=" Email: <?php echo $row['user_email']; ?>"
+                                        href=" mailto: <?php echo $row['user_email']; ?>"
                                         style="color: #198754; font-size: 1rem; background-color: white; transition: backgroundColor 0.3s;"
                                         onmouseover="this.style.backgroundColor='#198754';this.style.color='#fff'"
                                         onmouseout="this.style.backgroundColor='white';this.style.color='#198754'">Email

@@ -62,13 +62,13 @@ if ($result->num_rows > 0) {
                     <h4 class="title">Support</h4>
                     <ul class="px-0">
                         <li>
-                            <a href="#">support@iGbetiFarm</a>
+                            <a href="mailto:support@iGbetiFarm">support@iGbetiFarm</a>
                         </li>
                         <li>
-                            <a href="#">info@igbetifarm.com</a>
+                            <a href="mailto:info@igbetifarm.com">info@igbetifarm.com</a>
                         </li>
                         <li>
-                            <a href="#">inquiry@igbetifarm.com</a>
+                            <a href="mailto:inquiry@igbetifarm.com">inquiry@igbetifarm.com</a>
                         </li>
                         <li>
                             <a href="#">Safety tips</a>
@@ -141,7 +141,14 @@ if ($result->num_rows > 0) {
     margin-left: 20%;
     width: 60%;">
 <div class="footer-bottom d-flex mx-0 align-items-center justify-content-center">
-    <p>Copyrights © 2023. All Rights Reserved.</p>
+
+
+    <p>
+        <?php
+        $currentYear = date('Y');
+        echo "Copyrights © $currentYear. All Rights Reserved.";
+        ?>
+    </p>
     <ul class="px-0 d-flex flex-wrap align-items-lg-center justify-content-center">
         <li>
             <a href="#">Terms & Conditions</a>

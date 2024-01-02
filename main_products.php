@@ -75,12 +75,33 @@
                     <div class="b-post-advert-banner b-main-page__post-advert-banner">
                         <p class="b-post-advert-banner__heading">Got something to sell</p>
 
+                        <?php if ($isLoggedIn && isset($user_type) && ($user_type === 'seller' || $user_type === 'admin')) { ?>
                         <button onclick="location.href = 'postad.php'" aria-label="Post ad"
                             class="b-post-advert-banner__button">
                             <!-- location.href='postad.php' -->
                             <div class="b-post-advert-banner__button_inner">
                                 <div>
                         </button>
+                        <?php } elseif ($isLoggedIn && isset($user_type) && $user_type === 'buyer') { ?>
+                        <button onclick="showErrorMessage()" aria-label="Post ad" class="b-post-advert-banner__button">
+                            <!-- location.href='postad.php' -->
+                            <div class="b-post-advert-banner__button_inner">
+                                <div>
+                        </button>
+                        <script>
+                        function showErrorMessage() {
+                            alert("You are a buyer account. You need to be a seller account to post ads.");
+                            // You can modify this to display the error message in a different way (e.g., using a modal)
+                        }
+                        </script>
+                        <?php } else { ?>
+                        <button onclick="location.href = 'postad.php'" aria-label="Post ad"
+                            class="b-post-advert-banner__button">
+                            <!-- location.href='postad.php' -->
+                            <div class="b-post-advert-banner__button_inner">
+                                <div>
+                        </button>
+                        <?php } ?>
                         <p class="b-post-advert-banner__bottom-text">Post an advert for free</p>
                     </div>
                 </div>
@@ -130,7 +151,7 @@
                         $counter++;
             ?>
             <?php 
-                if ($counter <= 2) {
+                if ($currentPage == 1 && $counter <= 2) {
             ?>
 
             <div class="col-12 col-xl-12 col-md-12 col-sm-12 listing__products__box">
@@ -169,8 +190,21 @@
                             </h5>
                             <p class="card-text">
                                 <?php echo $row['ad_description']; ?></p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins
-                                    ago</small></p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    <?php
+                                    $createdTimestamp = new DateTime($row['created_at']);
+                                    $currentTimestamp = new DateTime();
+                                    $timeDifference = $createdTimestamp->diff($currentTimestamp);
+
+                                    if ($timeDifference->i < 60) {
+                                        echo '<p class="card-text"><small class="text-muted">Last updated ' . $timeDifference->i . ' minutes ago</small></p>';
+                                    } else {
+                                        echo '<p class="card-text"><small class="text-muted">Last updated ' . $timeDifference->h . ' hours ago</small></p>';
+                                    }
+                                    ?>
+                                </small>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -254,25 +288,31 @@
             ?>
             <div class="pagination justify-content-center mt-4">
                 <?php if ($currentPage > 1) : ?>
-                <a href="?page=1" class="btn btn-primary" style="background-color:#8a288f; color:#fff;">First</a>
-                <a href=" ?page=<?php echo $currentPage - 1; ?>" class="btn btn-primary mx-1"
-                    style="background-color:#8a288f; color:#fff;">Previous</a>
+                <!-- First and Previous buttons -->
+                <a href="?page=1" class="btn btn-success">First</a>
+                <a href="?page=<?php echo $currentPage - 1; ?>" class="btn btn-success mx-1">Previous</a>
                 <?php endif; ?>
 
                 <?php for ($page = max(1, $currentPage - 2); $page <= min($currentPage + 2, $totalPages); $page++) : ?>
-                <a href="?page=<?php echo $page; ?>"
-                    class="btn btn-outline-primary <?php if ($page === $currentPage) echo 'active'; ?> mx-1"
-                    style="border-color:#8a288f; color:#8a288f;background-color: white; transition: backgroundColor 0.3s;"
-                    onmouseover="this.style.backgroundColor='#f9d9fb'"
-                    onmouseout="this.style.backgroundColor='#fff'"><?php echo $page; ?></a>
+                <!-- Page number buttons -->
+                <?php if ($page == $currentPage) : ?>
+                <a href="?page=<?php echo $page; ?>" class="btn btn-success mx-1 active"
+                    style="color: white; background-color: green;"><?php echo $page; ?></a>
+                <?php else : ?>
+                <a href="?page=<?php echo $page; ?>" class="btn btn-outline-success mx-1"
+                    style="color: green; transition: background-color 0.3s;"
+                    onmouseover="this.style.color='white'; this.style.backgroundColor='green'"
+                    onmouseout="this.style.color='green'; this.style.backgroundColor='#fff'"><?php echo $page; ?></a>
+                <?php endif; ?>
                 <?php endfor; ?>
 
                 <?php if ($currentPage < $totalPages) : ?>
-                <a href="?page=<?php echo $currentPage + 1; ?>" class="btn btn-primary mx-1"
-                    style="background-color:#8a288f; color:#fff;">Next</a>
-                <a href="?page=<?php echo $totalPages; ?>" class="btn btn-primary"
-                    style="background-color:#8a288f; color:#fff;">Last</a>
+                <!-- Next and Last buttons -->
+                <a href="?page=<?php echo $currentPage + 1; ?>" class="btn btn-success mx-1">Next</a>
+                <a href="?page=<?php echo $totalPages; ?>" class="btn btn-success">Last</a>
                 <?php endif; ?>
+
+
             </div>
 
 

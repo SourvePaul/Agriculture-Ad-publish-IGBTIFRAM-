@@ -1,14 +1,25 @@
 <?php
- require_once('db_connect.php');
- session_start();
-
-// Default value for $isLoggedIn
+require_once('db_connect.php');
+ob_start();
+session_cache_limiter( FALSE );
+session_start(); 
 $isLoggedIn = false;
 
 // Check if the session variable is set and user is logged in
 if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
     $username = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : '';
     $isLoggedIn = true;
+}
+
+if (isset($_SESSION['user_email'])) {
+    $user_email = $_SESSION['user_email'];
+
+    $sql = "SELECT * FROM userinfo where user_email='$user_email'";  
+    $result = $connection->query($sql);
+    $row = $result->fetch_assoc();
+    $user_name = $row['user_name'];
+    $fullname = $row['fullname'];
+    $user_type = $row['user_type']; // Define the user_type variable from database
 }
 ?>
 <!DOCTYPE html>

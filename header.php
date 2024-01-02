@@ -102,7 +102,19 @@
 
                 <button class="button_sell btn-lg float-right" type="submit"
                     style="background-color: #8a288f; width: 120px; border:none; margin: 26px 10px; height: 45px;color: #fff;">
+                    <?php if ($isLoggedIn && isset($user_type) && ($user_type === 'seller' || $user_type === 'admin')) { ?>
                     <a href="postad.php" style="color:#fff; text-decoration:none;">Sell</a>
+                    <?php } elseif ($isLoggedIn && isset($user_type) && $user_type === 'buyer') { ?>
+                    <a onclick="showErrorMessage()" style="color:#fff; text-decoration:none;">Sell</a>
+                    <script>
+                    function showErrorMessage() {
+                        alert("You are a buyer account. You need to be a seller account to post ads.");
+                        // You can modify this to display the error message in a different way (e.g., using a modal)
+                    }
+                    </script>
+                    <?php } else { ?>
+                    <a href="postad.php" style="color:#fff; text-decoration:none;">Sell</a>
+                    <?php } ?>
                 </button>
 
             </div>
