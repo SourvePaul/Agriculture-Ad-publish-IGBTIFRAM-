@@ -12,9 +12,10 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
 }
 
 $ad_id = $_GET['ad_id'];
-$sql = "SELECT ad_info.ad_id, ad_info.ad_title, ad_info.ad_description, ad_info.ad_price, categories.cat_name, sub_categories.sub_cat_name, ad_info.ad_feature_image, ad_info.multiple_images FROM ad_info
+$sql = "SELECT ad_info.ad_id, ad_info.ad_title, ad_info.ad_description, ad_info.ad_phone, ad_info.ad_price, categories.cat_name, sub_categories.sub_cat_name, ad_info.ad_feature_image, ad_info.multiple_images, userinfo.user_email FROM ad_info
                                 LEFT JOIN categories ON ad_info.cat_id = categories.cat_id
                                 LEFT JOIN sub_categories ON ad_info.sub_cat_id = sub_categories.sub_cat_id
+                                LEFT JOIN userinfo ON ad_info.user_id = userinfo.user_id
                                 WHERE ad_info.ad_id = {$ad_id}";
                                     
 $result = mysqli_query($connection, $sql) or die("Query failed from users.");
@@ -326,7 +327,20 @@ $result = mysqli_query($connection, $sql) or die("Query failed from users.");
                                 <div class="text d-flex justify-content-center flex-column gap-2 col-12">
                                     <button type="button" class="btn btn-outline-success" width="100%">View price
                                         history</button>
-                                    <button type="button" class="btn btn-outline-success">Request call back</button>
+                                    <a type="button" class="btn btn-outline-success"
+                                        href=" tel: <?php echo $row['ad_phone']; ?>"
+                                        style="color: #198754; font-size: 1rem; background-color: white; transition: backgroundColor 0.3s;"
+                                        onmouseover="this.style.backgroundColor='#198754';this.style.color='#fff'"
+                                        onmouseout="this.style.backgroundColor='white';this.style.color='#198754'">Request
+                                        call back</a>
+
+                                    <a type="button" class="btn btn-outline-success"
+                                        href=" Email: <?php echo $row['user_email']; ?>"
+                                        style="color: #198754; font-size: 1rem; background-color: white; transition: backgroundColor 0.3s;"
+                                        onmouseover="this.style.backgroundColor='#198754';this.style.color='#fff'"
+                                        onmouseout="this.style.backgroundColor='white';this.style.color='#198754'">Email
+                                        to this seller</a>
+
                                 </div>
                             </div>
                         </div>

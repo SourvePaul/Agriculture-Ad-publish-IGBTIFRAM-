@@ -95,7 +95,30 @@
         <div class="row">
             <?php
 
-                $sql = "SELECT * FROM ad_info ORDER BY ad_id DESC LIMIT 10";  
+
+                // Count the total number of rows in the table
+                $countSql = "SELECT COUNT(*) AS total FROM ad_info";
+                $countResult = $connection->query($countSql);
+                $totalRecords = $countResult->fetch_assoc()['total'];
+
+                // Define the number of records per page
+                $recordsPerPage = 10; // Change this to your desired number
+
+                // Calculate total pages
+                $totalPages = ceil($totalRecords / $recordsPerPage);
+
+                // Determine the current page number
+                if (!isset($_GET['page'])) {
+                    $currentPage = 1;
+                } else {
+                    $currentPage = $_GET['page'];
+                }
+
+                // Calculate the starting record for the query based on the current page
+                $offset = ($currentPage - 1) * $recordsPerPage;
+
+                // Modify your SQL query to include LIMIT and OFFSET
+                $sql = "SELECT * FROM ad_info ORDER BY ad_id DESC LIMIT $recordsPerPage OFFSET $offset";
                 $result = $connection->query($sql);
                 $product = 0;
                 $counter = 0;
@@ -229,6 +252,30 @@
             <?php
             }
             ?>
+            <div class="pagination justify-content-center mt-4">
+                <?php if ($currentPage > 1) : ?>
+                <a href="?page=1" class="btn btn-primary" style="background-color:#8a288f; color:#fff;">First</a>
+                <a href=" ?page=<?php echo $currentPage - 1; ?>" class="btn btn-primary mx-1"
+                    style="background-color:#8a288f; color:#fff;">Previous</a>
+                <?php endif; ?>
+
+                <?php for ($page = max(1, $currentPage - 2); $page <= min($currentPage + 2, $totalPages); $page++) : ?>
+                <a href="?page=<?php echo $page; ?>"
+                    class="btn btn-outline-primary <?php if ($page === $currentPage) echo 'active'; ?> mx-1"
+                    style="border-color:#8a288f; color:#8a288f;background-color: white; transition: backgroundColor 0.3s;"
+                    onmouseover="this.style.backgroundColor='#f9d9fb'"
+                    onmouseout="this.style.backgroundColor='#fff'"><?php echo $page; ?></a>
+                <?php endfor; ?>
+
+                <?php if ($currentPage < $totalPages) : ?>
+                <a href="?page=<?php echo $currentPage + 1; ?>" class="btn btn-primary mx-1"
+                    style="background-color:#8a288f; color:#fff;">Next</a>
+                <a href="?page=<?php echo $totalPages; ?>" class="btn btn-primary"
+                    style="background-color:#8a288f; color:#fff;">Last</a>
+                <?php endif; ?>
+            </div>
+
+
         </div>
     </div>
 </section>

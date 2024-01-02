@@ -64,7 +64,9 @@ if (isset($_SESSION['user_email'])) {
                         enctype="multipart/form-data">
                         <div class="box-form" style="margin-bottom:-20px;">
                             <div class="col-md-12" style="padding: 20px 1px;">
-                                <h4 class="form-title" style="padding: 8px 1px;"><?php echo  $row['user_name']; ?></h4>
+                                <input type="hidden" class="form-title" style="padding: 8px 1px;"
+                                    value="<?php echo  $row['user_name']; ?>">
+
                                 <h4 class="form-title"
                                     style="width:100%; background-color:#42BC35; color:#fff; text-align:center; align-items:center; justify-content:center; padding:15px 1px; border-radius: 5px;">
                                     Post Ad</h4>
@@ -164,23 +166,6 @@ if (isset($_SESSION['user_email'])) {
                                             </select>
                                         </div>
 
-                                        <div class="form-group" style="padding: 5px 1px;">
-                                            <label style="padding: 8px 0px; font-weight:bold;">User</label>
-                                            <select class="form-control select2" name="user_id">
-                                                <!-- required="" -->
-                                                <option value="">---Select User---</option>
-                                                <?php
-                                                // Read data
-                                                $sql = "SELECT * FROM userinfo ORDER BY user_name ASC";
-                                                $result = $connection->query($sql);
-                                                // output data of each row  
-                                                while($row = $result->fetch_assoc()) {  
-                                                ?>
-                                                <option value="<?php echo $row['user_id']; ?>">
-                                                    <?php echo $row['user_name']; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
                                         <div class="form-group" style="padding: 10px 1px;">
                                             <label for="exampleInputAdFeatureImage"
                                                 style="padding: 8px 0px; font-weight:bold;">Ad-Feature
