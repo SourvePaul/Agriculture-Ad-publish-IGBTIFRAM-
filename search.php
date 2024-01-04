@@ -1,19 +1,16 @@
 <?php
 require_once('db_connect.php');
 
-
-// Fetch the search query from the AJAX request
-$searchQuery = $_POST['query']; // Assuming it's sent as POST data
-
-// Perform a simple search in the 'products' table
+$searchQuery = $_POST['query']; 
 $sql = "SELECT * FROM ad_info WHERE ad_title LIKE '%" . $connection->real_escape_string($searchQuery) . "%'";
 $result = $connection->query($sql);
 
-// Check if any results were found
+
 if ($result->num_rows > 0) {
-    // Output the results as HTML (you can format this as needed)
+    
     while ($row = $result->fetch_assoc()) {
     ?>
+
 
 <div class="col-6 col-xl-3 col-md-3 col-sm-3">
     <div class="listing-card ll-none">
@@ -46,18 +43,17 @@ if ($result->num_rows > 0) {
                 <div class="listing-card__body">
                     <div class="body-wrapper">
                         <!-- <div class="title">
-                                                        <a href="#"></a>
-                                                        </div> -->
+                                    <a href="#"></a>
+                                    </div> -->
                         <div class="title">
                             <a href="add.php?ad_id=<?php echo $row['ad_id']; ?>" data-bs-toggle="tooltip"
-                                data-bs-placement="top" title="<?php echo $row['ad_title']; ?>"
-                                style="text-decoration: none; color: black; font-weight:bold; font-size: 25px; margin-left: 20px;">
+                                data-bs-placement="top" title="<?php echo $row['ad_title']; ?>">
                                 <?php
-                                    $title = $row['ad_title'];
-                                    $words = explode(' ', $title); // Split the string into an array of words
-                                    $limitedWords = implode(' ', array_slice($words, 0, 2));
-                                    echo $limitedWords.'...'; // Output the truncated string
-                                ?>
+                                                $title = $row['ad_title'];
+                                                $words = explode(' ', $title); // Split the string into an array of words
+                                                $limitedWords = implode(' ', array_slice($words, 0, 2));
+                                                echo $limitedWords.'...'; // Output the truncated string
+                                            ?>
                             </a>
                         </div>
 
@@ -76,11 +72,6 @@ if ($result->num_rows > 0) {
     </div>
 </div>
 
-<!-- echo '<div class="search-result">';
-                echo '<h3>' . $row['ad_title'] . '</h3>';
-                echo '<p>' . $row['ad_description'] . '</p>';
-                // Add more details you want to display
-                echo '</div>'; -->
 <?php         
                 }
             } 
@@ -91,11 +82,7 @@ if ($result->num_rows > 0) {
     <p>No data found.</p>
 </div>
 
-<!-- else {
-    echo 'No results found'; // Displayed if no results are found
-} -->
 <?php
-            }
-// Close the database connection
+    }
 $connection->close();
 ?>

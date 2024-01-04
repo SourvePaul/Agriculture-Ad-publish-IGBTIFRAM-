@@ -565,7 +565,7 @@ if (isset($_SESSION['user_email'])) {
                                     <i class="fa fa-search fa-icon"></i>
                                 </button>
                             </div>
-                            <div id="searchResults"></div>
+
                         </div>
                     </div>
 
@@ -657,13 +657,21 @@ if (isset($_SESSION['user_email'])) {
                                         </aside>
 
                                         <main class="main col-md-4 col-lg-8 col-xl-8" style="margin-left: -65px;">
+
+                                            <section class="content">
+                                                <div class="listing__products" id="product_list">
+                                                    <div class="row">
+                                                        <div id='searchResults'></div>
+                                                    </div>
+                                                </div>
+                                            </section>
                                             <?php
                                             if (isset($_GET['cat_id'])) {
                                                 include "category.php";
                                             } elseif (isset($_GET['sub_cat_id'])) {
                                                 include "sub_category.php";
-                                            } elseif (isset($_GET['query'])) {
-                                                include "search.php";
+                                            } elseif (isset($_POST['query'])) {
+                                                echo "";
                                             }
                                              else {
                                                 include "main_products.php";
@@ -695,25 +703,24 @@ if (isset($_SESSION['user_email'])) {
     <script src="assest/custom.js"></script>
     <script>
     function searchData() {
-        var searchQuery = $('#search').val(); // Get the search query from the input field
-
+        var searchQuery = $(' #search').val();
         $.ajax({
-            type: 'POST', // Use POST or GET based on your server-side handling
-            url: 'search.php', // Replace 'search.php' with your server-side script handling the search
+            type: 'POST',
+            url: 'search.php',
             data: {
                 query: searchQuery
-            }, // Send the search query to the server
-            success: function(response) {
-                // Handle the response from the server
-                $('#searchResults').html(response); // Update the search results in the 'searchResults' div
             },
-            error: function(xhr, status, error) {
-                // Handle errors if any
+            success: function(response) {
+                $('#searchResults').html(response);
+            },
+            error: function(xhr,
+                status, error) {
                 console.error(xhr.responseText);
             }
         });
     }
     </script>
+
 
 </body>
 
