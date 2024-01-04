@@ -65,7 +65,7 @@ if (isset($_SESSION['user_email'])) {
                         <div class="box-form" style="margin-bottom:-20px;">
                             <div class="col-md-12" style="padding: 20px 1px;">
                                 <input type="hidden" class="form-title" style="padding: 8px 1px;"
-                                    value="<?php echo  $row['user_name']; ?>">
+                                    value="<?php echo  $row['user_id']; ?>" name="user_id">
 
                                 <h4 class="form-title"
                                     style="width:100%; background-color:#42BC35; color:#fff; text-align:center; align-items:center; justify-content:center; padding:15px 1px; border-radius: 5px;">

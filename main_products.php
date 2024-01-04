@@ -115,8 +115,6 @@
     <div class="listing__products" id="product_list">
         <div class="row">
             <?php
-
-
                 // Count the total number of rows in the table
                 $countSql = "SELECT COUNT(*) AS total FROM ad_info";
                 $countResult = $connection->query($countSql);
@@ -213,6 +211,7 @@
             <?php 
             } else { 
             ?>
+
             <div class="col-6 col-xl-3 col-md-3 col-sm-3">
                 <div class="listing-card ll-none">
                     <div class="listing-card__box listing-card__box_featured" data-marker="0">

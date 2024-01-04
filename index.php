@@ -658,22 +658,23 @@ if (isset($_SESSION['user_email'])) {
 
                                         <main class="main col-md-4 col-lg-8 col-xl-8" style="margin-left: -65px;">
 
-                                            <section class="content">
+                                            <!-- <section class="content">
                                                 <div class="listing__products" id="product_list">
                                                     <div class="row">
                                                         <div id='searchResults'></div>
                                                     </div>
                                                 </div>
-                                            </section>
+                                            </section> -->
                                             <?php
                                             if (isset($_GET['cat_id'])) {
                                                 include "category.php";
                                             } elseif (isset($_GET['sub_cat_id'])) {
                                                 include "sub_category.php";
-                                            } elseif (isset($_POST['query'])) {
-                                                echo "";
-                                            }
-                                             else {
+                                            }// } elseif (isset($_POST['query'])) {
+                                            //     include "search.php";
+                                            //     echo "<div id='searchResults'></div>";
+                                            // }
+                                            elseif (!isset($_GET['cat_id']) && !isset($_GET['sub_cat_id']) && !isset($_POST['query'])) {
                                                 include "main_products.php";
                                             }
                                             ?>

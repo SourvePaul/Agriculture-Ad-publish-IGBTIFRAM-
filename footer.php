@@ -65,10 +65,10 @@ if ($result->num_rows > 0) {
                             <a href="mailto:support@iGbetiFarm">support@iGbetiFarm</a>
                         </li>
                         <li>
-                            <a href="mailto:info@igbetifarm.com">info@igbetifarm.com</a>
+                            <a href="mailto:info@igbetifarm.com">info@igbetifarm</a>
                         </li>
                         <li>
-                            <a href="mailto:inquiry@igbetifarm.com">inquiry@igbetifarm.com</a>
+                            <a href="mailto:inquiry@igbetifarm.com">inquiry@igbetifarm</a>
                         </li>
                         <li>
                             <a href="#">Safety tips</a>
