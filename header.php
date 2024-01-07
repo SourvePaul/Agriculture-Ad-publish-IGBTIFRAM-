@@ -80,14 +80,26 @@
                     if($isLoggedIn) { 
                     ?>
                     <li class="line__v">|</li>
-                    <li>
+                    <!-- <li>
                         <a href="#"><i class="icon-user icons"></i> <?php echo $username; ?></a>
+                    </li> -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-user icons"></i> <?php echo $username; ?>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="profile.php">Profile</a>
+                            <a class="dropdown-item" href="cPassword.php">Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="main_logout.php">Logout</a>
+                        </div>
                     </li>
 
-                    <li class="line__v">|</li>
+                    <!-- <li class="line__v">|</li>
                     <li>
                         <a href="main_logout.php">Logout</a>
-                    </li>
+                    </li> -->
                     <?php } else { ?>
                     <li class="line__v">|</li>
                     <li>

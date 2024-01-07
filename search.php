@@ -1,88 +1,33 @@
 <?php
-require_once('db_connect.php');
-
-$searchQuery = $_POST['query']; 
-$sql = "SELECT * FROM ad_info WHERE ad_title LIKE '%" . $connection->real_escape_string($searchQuery) . "%'";
-$result = $connection->query($sql);
-
-
-if ($result->num_rows > 0) {
-    
-    while ($row = $result->fetch_assoc()) {
-    ?>
-
-
-<div class="col-6 col-xl-3 col-md-3 col-sm-3">
-    <div class="listing-card ll-none">
-        <div class="listing-card__box listing-card__box_featured" data-marker="0">
-            <div class="listing-card__media shine">
-                <a href="add.php?ad_id=<?php echo $row['ad_id']; ?>">
-                    <img src="igbtadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
-                        alt="<?php echo $row['ad_id']; ?>" width="360" height="200">
-                </a>
-
-                <div class="listing-btn-action">
-                    <a class="listing-btn-ico view_more_link" href="add.php?ad_id=<?php echo $row['ad_id']; ?>"
-                        data-uk-tooltip="View More" title="" data-aria-describedby="uk-tooltip-0">
-                        <i class="fa-solid fa-eye"></i>
-                    </a>
-                    <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Add to Compare" title=""
-                        data-aria-describedby="uk-tooltip-1">
-                        <i class="fa-solid fa-code-compare"></i>
-                        <i class="fa-solid fa-not-equal"></i>
-                    </a>
-                    <a class="listing-btn-ico listing-tgl-button" href="#" data-uk-tooltip="Add to Favorite" title=""
-                        data-aria-describedby="uk-tooltip-2">
-                        <i class="fa-regular fa-heart"></i>
-                        <i class="fa-solid fa-heart"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="">
-                <div class="listing-card__body">
-                    <div class="body-wrapper">
-                        <!-- <div class="title">
-                                    <a href="#"></a>
-                                    </div> -->
-                        <div class="title">
-                            <a href="add.php?ad_id=<?php echo $row['ad_id']; ?>" data-bs-toggle="tooltip"
-                                data-bs-placement="top" title="<?php echo $row['ad_title']; ?>">
-                                <?php
-                                                $title = $row['ad_title'];
-                                                $words = explode(' ', $title); // Split the string into an array of words
-                                                $limitedWords = implode(' ', array_slice($words, 0, 2));
-                                                echo $limitedWords.'...'; // Output the truncated string
-                                            ?>
-                            </a>
-                        </div>
-
-                        <div class="price">
-                            &#x20A6;
-                            <?php echo $row['ad_price']; ?>
-                        </div>
-                    </div>
-
-                    <p class="body-text">
-                        <?php echo $row['ad_description']; ?>
-                    </p>
-                </div>
-            </div>
-        </div>
+//Including Database configuration file.
+include "db_connect.php";
+//Getting value of "search" variable from "script.js".
+if (isset($_POST['search'])) {
+//Search box value assigning to $ad_title variable.
+$ad_title = $_POST['search'];
+//Search query.
+    $Query = "SELECT ad_title, ad_id FROM ad_info WHERE ad_title LIKE '%$ad_title%' LIMIT 5";
+//Query execution
+   $ExecQuery = MySQLi_query($connection, $Query);
+//Creating unordered list to display result.
+   echo '
+<ul>
+   ';
+   //Fetching result from database.
+   while ($Result = MySQLi_fetch_array($ExecQuery)) {
+       ?>
+<!-- Creating unordered list items.
+        Calling javascript function named as "fill" found in "script.js" file.
+        By passing fetched result as parameter. -->
+<li onclick='fill("<?php echo $Result['ad_title']; ?>")'>
+    <div class="ad-title-box">
+        <a href="add.php?ad_id=<?php echo $Result['ad_id']; ?>">
+            <?php echo $Result['ad_title']; ?>
+        </a>
     </div>
-</div>
-
-<?php         
-                }
-            } 
-            else { 
-            ?>
-
-<div class="col-12">
-    <p>No data found.</p>
-</div>
-
+</li>
+<!-- Below php code is just for closing parenthesis. Don't be confused. -->
 <?php
-    }
-$connection->close();
+}}
 ?>
+</ul>

@@ -52,14 +52,14 @@
                         <div class="d-flex align-items-center">
                             <input type="radio" id="buyer" value="buyer" name="user_type"
                                 class="input-reset form__input" />
-                            <label class="form__label" style="margin-right: 10px;">I want to Buy </label>
+                            <label class="form__label" style="margin-right: 10px;" for="buyer">I want to Buy </label>
                             <input type="radio" id="seller" value="seller" name="user_type"
                                 class="input-reset form__input" />
-                            <label class="form__label">I Want to Sell</label>
+                            <label class="form__label" for="seller">I Want to Sell</label>
                         </div>
                         <div class="d-flex">
-                            <input type="checkbox" name="Имя" class="input-reset form__input" />
-                            <label class="form__label" style="margin-right: 10px;">I accept</label>
+                            <input type="checkbox" name="Имя" class="input-reset form__input" id="accept" />
+                            <label class="form__label" style="margin-right: 10px;" for="accept">I accept</label>
                             <a href="#"><b>Privacy Policy</b></a>
                         </div>
                         <button

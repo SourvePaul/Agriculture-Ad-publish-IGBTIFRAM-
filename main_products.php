@@ -1,7 +1,7 @@
 <section class="content">
     <div class="row" id="main_slider_post_button">
 
-        <div class="col-12 col-sm-12 col-md-8">
+        <div class="col-12 col-sm-12 col-md-8" style="position:relative;">
             <div class="container-slide slider_do" style="padding: 26px 0px;">
                 <?php
                  function make_query($connection) {

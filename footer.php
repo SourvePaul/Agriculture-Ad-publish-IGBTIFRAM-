@@ -62,7 +62,7 @@ if ($result->num_rows > 0) {
                     <h4 class="title">Support</h4>
                     <ul class="px-0">
                         <li>
-                            <a href="mailto:support@iGbetiFarm">support@iGbetiFarm</a>
+                            <a href="mailto:support@iGbetiFarm">support@igbetifarm</a>
                         </li>
                         <li>
                             <a href="mailto:info@igbetifarm.com">info@igbetifarm</a>

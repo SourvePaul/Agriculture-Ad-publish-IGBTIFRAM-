@@ -49,9 +49,17 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
                         <input type="password" name="password" class="input-reset form__input" placeholder="Password" />
 
                         <div class="d-flex">
-                            <input type="checkbox" name="" class="input-reset form__input" />
-                            <label class="form__label">Remember me </label>
+                            <input type="checkbox" name="" class="input-reset form__input" id="remember_me" />
+                            <label class="form__label" for="remember_me">Remember me </label>
                             <a href="#">Forgot Password?</a>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <input type="radio" id="buyer" value="buyer" name="user_type"
+                                class="input-reset form__input" />
+                            <label class="form__label" style="margin-right: 10px;" for="buyer">I want to Buy </label>
+                            <input type="radio" id="seller" value="seller" name="user_type"
+                                class="input-reset form__input" />
+                            <label class="form__label" for="seller">I Want to Sell</label>
                         </div>
                         <button
                             class="link__template btn-hover-animate d-flex align-items-center justify-content-center">

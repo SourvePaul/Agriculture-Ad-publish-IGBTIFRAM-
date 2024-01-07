@@ -16,8 +16,10 @@ echo $user_phone; echo "<br>";
 echo $user_status; echo "<br>";
 exit();
 */
-?>
-<?php
+
+// Hash the password before storing it in the database
+$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
 $sql = "INSERT INTO `userinfo` ( `user_name`, `user_type`, `password`, `user_email`,  `user_phone`, `fullname`, `user_status`) VALUES ('$user_name','$user_type','$password','$user_email','$user_phone','$fullname','$user_status')";
 
 if ($connection->query($sql) === TRUE) {

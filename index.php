@@ -18,6 +18,7 @@ if (isset($_SESSION['user_email'])) {
     $result = $connection->query($sql);
     $row = $result->fetch_assoc();
     $user_name = $row['user_name'];
+    $user_email = $row['user_email'];
     $fullname = $row['fullname'];
     $user_type = $row['user_type']; // Define the user_type variable from database
 }
@@ -44,6 +45,55 @@ if (isset($_SESSION['user_email'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        margin-top: -20px;
+        border-radius: 5px;
+    }
+
+    .dropdown-menu a {
+        color: #333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: transparent;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    .ad-title-box {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        width: 200px;
+        text-align: center;
+        z-index: 1;
+        position: relative;
+    }
+
+    .ad-item:hover .ad-title-box {
+        display: block;
+    }
+
+    .ad-title-box a {
+        color: #fff;
+        text-decoration: none;
+    }
+
     .listing__products .product-badges.product-badges-position {
         position: absolute;
         left: 10px;
@@ -559,11 +609,14 @@ if (isset($_SESSION['user_email'])) {
                             </h6>
 
                             <div class="search-main" style="margin-top: 35px;">
+                                <!-- <form> -->
                                 <input type="text" class="input-search" placeholder="I am looking for ..." name="search"
-                                    id="search" />
-                                <button type="submit" name="" class="button_search" onclick="searchData()">
+                                    id="search" onkeyup="showResult(this.value)" />
+                                <button type="submit" name="" class="button_search">
                                     <i class="fa fa-search fa-icon"></i>
                                 </button>
+                                <div id="display"></div>
+                                <!-- </form> -->
                             </div>
 
                         </div>
@@ -657,24 +710,12 @@ if (isset($_SESSION['user_email'])) {
                                         </aside>
 
                                         <main class="main col-md-4 col-lg-8 col-xl-8" style="margin-left: -65px;">
-
-                                            <!-- <section class="content">
-                                                <div class="listing__products" id="product_list">
-                                                    <div class="row">
-                                                        <div id='searchResults'></div>
-                                                    </div>
-                                                </div>
-                                            </section> -->
                                             <?php
                                             if (isset($_GET['cat_id'])) {
                                                 include "category.php";
                                             } elseif (isset($_GET['sub_cat_id'])) {
                                                 include "sub_category.php";
-                                            }// } elseif (isset($_POST['query'])) {
-                                            //     include "search.php";
-                                            //     echo "<div id='searchResults'></div>";
-                                            // }
-                                            elseif (!isset($_GET['cat_id']) && !isset($_GET['sub_cat_id']) && !isset($_POST['query'])) {
+                                            } elseif (!isset($_GET['cat_id']) && !isset($_GET['sub_cat_id'])) {
                                                 include "main_products.php";
                                             }
                                             ?>
@@ -703,23 +744,43 @@ if (isset($_SESSION['user_email'])) {
     <script src="assest/bootstrap.js"></script>
     <script src="assest/custom.js"></script>
     <script>
-    function searchData() {
-        var searchQuery = $(' #search').val();
-        $.ajax({
-            type: 'POST',
-            url: 'search.php',
-            data: {
-                query: searchQuery
-            },
-            success: function(response) {
-                $('#searchResults').html(response);
-            },
-            error: function(xhr,
-                status, error) {
-                console.error(xhr.responseText);
+    // Retrieve the value from "ajax.php".
+    function fill(Value) {
+        // Assign the value to the "search" div in "search.php".
+        $('#search').val(Value);
+        // Hide the "display" div in "search.php".
+        $('#display').hide();
+    }
+    $(document).ready(function() {
+        // When a key is pressed in the "Search box" of "search.php", this function will be called.
+        $("#search").keyup(function() {
+            // Assign the search box value to a JavaScript variable named "ad_title".
+            var ad_title = $('#search').val();
+            // Validate if "ad_title" is empty.
+            if (ad_title == "") {
+                // Assign an empty value to the "display" div in "search.php".
+                $("#display").html("");
+            }
+            // If the ad_title is not empty.
+            else {
+                // Initiate an AJAX request.
+                $.ajax({
+                    // Set the AJAX type as "POST".
+                    type: "POST",
+                    url: "search.php",
+                    // Pass the value of "ad_title" into the "search" variable.
+                    data: {
+                        search: ad_title
+                    },
+                    // If a result is found, this function will be called.
+                    success: function(html) {
+                        // Assign the result to the "display" div in "search.php".
+                        $("#display").html(html).show();
+                    }
+                });
             }
         });
-    }
+    });
     </script>
 
 

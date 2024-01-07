@@ -62,6 +62,54 @@ $result = mysqli_query($connection, $sql) or die("Query failed from users.");
         line-height: 1.5;
         /* Adjust the spacing between lines */
     }
+
+    /* Modal styles */
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+
+    /* Modal content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        /* Could be more or less, depending on screen size */
+    }
+
+    /* Close button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
     </style>
 </head>
 
@@ -356,12 +404,81 @@ $result = mysqli_query($connection, $sql) or die("Query failed from users.");
                                         onmouseout="this.style.backgroundColor='white';this.style.color='#198754'">Request
                                         call back</a>
 
-                                    <a type="button" class="btn btn-outline-success"
+                                    <!-- <a type="button" class="btn btn-outline-success"
                                         href=" mailto: <?php echo $row['user_email']; ?>"
                                         style="color: #198754; font-size: 1rem; background-color: white; transition: backgroundColor 0.3s;"
                                         onmouseover="this.style.backgroundColor='#198754';this.style.color='#fff'"
                                         onmouseout="this.style.backgroundColor='white';this.style.color='#198754'">Email
-                                        to this seller</a>
+                                        to this seller</a> -->
+
+                                    <!-- Trigger button -->
+                                    <a type="button" class="btn btn-outline-success" <?php if($isLoggedIn) { ?>
+                                        onclick="showEmailPopup('<?php echo $row['user_email']; ?>')" <?php } else { ?>
+                                        href="signin.php" <?php } ?> style="color: #198754; font-size: 1rem; background-color: white; transition:
+                                        backgroundColor 0.3s;"
+                                        onmouseover="this.style.backgroundColor='#198754';this.style.color='#fff'"
+                                        onmouseout="this.style.backgroundColor='white';this.style.color='#198754'">
+                                        Email to this seller
+                                    </a>
+
+                                    <!-- Hidden modal -->
+                                    <div id="emailModal" class="modal">
+                                        <div class="modal-content">
+                                            <span class="close" onclick="closeEmailPopup()">&times;</span>
+                                            <form id="emailForm" onsubmit="sendEmail(); return false;">
+                                                <label for="from">Mail from (buyer)</label>
+                                                <input type="text" id="from" class="form-control"
+                                                    value="<?php echo $_SESSION['user_email'] ?>" readonly><br />
+                                                <label for="to">Mail to (seller)</label>
+                                                <input type="text" id="to" class="form-control" value="" readonly><br />
+                                                <label for="subject">Subject</label>
+                                                <input type="text" id="subject" class="form-control"
+                                                    value="I want to buy this product" readonly><br />
+                                                <label for="body">Email body</label>
+                                                <textarea id="body" class="form-control"
+                                                    readonly>I want to buy this product, please reply.</textarea><br />
+                                                <input type="submit" value="SEND">
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                    function showEmailPopup(sellerEmail) {
+                                        document.getElementById('to').value = sellerEmail;
+                                        document.getElementById('emailModal').style.display = 'block';
+                                    }
+
+                                    function sendEmail() {
+                                        var to = document.getElementById('to').value;
+                                        var subject = document.getElementById('subject').value;
+                                        var body = document.getElementById('body').value;
+                                        var from = document.getElementById('from').value;
+
+                                        var data = new FormData();
+                                        data.append('to', to);
+                                        data.append('subject', subject);
+                                        data.append('message', body);
+                                        data.append('from', from);
+
+                                        fetch('sendEmail.php', {
+                                                method: 'POST',
+                                                body: data
+                                            })
+                                            .then(response => response.text())
+                                            .then(result => {
+                                                alert(result);
+                                                closeEmailPopup();
+                                            })
+                                            .catch(error => {
+                                                console.error('Error:', error);
+                                            });
+                                    }
+
+                                    function closeEmailPopup() {
+                                        document.getElementById('emailModal').style.display = 'none';
+                                    }
+                                    </script>
+
 
                                 </div>
                             </div>
