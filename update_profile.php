@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: profile.php?success=1");
         exit();
     } else {
-        header('Location: profile.php?success=0');
+        header('Location: profile.php?error=0');
         exit();
     }
 }

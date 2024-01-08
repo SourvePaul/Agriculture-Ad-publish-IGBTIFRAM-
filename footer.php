@@ -62,13 +62,13 @@ if ($result->num_rows > 0) {
                     <h4 class="title">Support</h4>
                     <ul class="px-0">
                         <li>
-                            <a href="mailto:support@iGbetiFarm">support@igbetifarm</a>
+                            <a href="mailto:support@iGbetiFarm">support@igbetifarm.com</a>
                         </li>
                         <li>
-                            <a href="mailto:info@igbetifarm.com">info@igbetifarm</a>
+                            <a href="mailto:info@igbetifarm.com">info@igbetifarm.com</a>
                         </li>
                         <li>
-                            <a href="mailto:inquiry@igbetifarm.com">inquiry@igbetifarm</a>
+                            <a href="mailto:inquiry@igbetifarm.com">inquiry@igbetifarm.com</a>
                         </li>
                         <li>
                             <a href="#">Safety tips</a>

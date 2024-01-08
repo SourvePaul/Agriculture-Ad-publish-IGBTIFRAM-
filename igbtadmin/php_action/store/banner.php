@@ -13,9 +13,11 @@ move_uploaded_file($temporary_location, $myLocation );
 
 // Receiving data
 $publish = $_POST['publish'];
+$banner_title = $_POST['banner_title'];
+$cat_id = $_POST['cat_id'];
 
 
-$sql = "INSERT INTO `banner` (`publish`,  `banner_img`) VALUES ('$publish','$banner_img')";
+$sql = "INSERT INTO `banner` (`publish`,  `banner_img`,	`banner_title`,`cat_id`) VALUES ('$publish','$banner_img', '$banner_title', '$cat_id')";
 
 if ($connection->query($sql) === TRUE) {
   

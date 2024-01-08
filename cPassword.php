@@ -11,9 +11,8 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
     $isLoggedIn = true;
 }
 
-if (isset($_SESSION['user_email'])) {
+if (isset($_SESSION['user_id']) || isset($_SESSION['user_email']) ) {
     $user_email = $_SESSION['user_email'];
-}
 
 ?>
 
@@ -170,75 +169,44 @@ if (isset($_SESSION['user_email'])) {
                                         <div class="d-flex justify-content-center align-items-center mb-3">
                                             <h3 class="text-center">Change Password</h3>
                                         </div>
-                                        <?php 
-                                        
-                                        if (isset($_POST['change_password'])) {
-                                            $current_password = $_POST['current_password'];
-                                            $password = $_POST['password'];
-                                            $confirm_password = $_POST['confirm_password'];
 
-                                            $sql = "SELECT password FROM userinfo WHERE user_email = '$user_email'";
+                                        <form action="change_password_handler.php" method="post"
+                                            style="background-color:transparent;">
 
-                                            $res = mysqli_query($connection,$sql);
-                                            $row = mysqli_fetch_assoc($res);
-                                            if(password_verify($current_password,$row['password'])){
-                                                if($confirm_password == ''){
-                                                    $error[]='Please confirm the password.';
-                                                }
-                                                if($password != $confirm_password){
-                                                    $error[]='Passwords do not match.';
-                                                }
-                                                if(strlen($password)<6){ //min
-                                                    $error[]='The password is 6 characters long.';
-                                                }
-                                                if(strlen($password)>20){ //min
-                                                    $error[]='Password: Max length 20 characters not allowed.';
-                                                }
-                                                if(!isset($error)){
-                                                    $options = array("cost"=>4);
-                                                    $password = password_hash($password, PASSWORD_BCRYPT,$options);
-                                                    $result = mysqli_query($bdc, "UPDATE userinfo SET password='$password' where user_email='$user_email'");
-                                                    if($result){
-                                                        header("location:profile.php?password_updated=1");
-                                                    } else{
-                                                        $error[]='Something went wrong';
-                                                    }
-                                                }
-                                            }
-                                            else {
-                                                $error[]='Current password does not match.';
-                                            }
-                                        } 
+                                            <?php 
+                                            if(isset($_GET['error'])) { 
+                                            ?>
+                                            <p class="error"><?php echo $_GET['error']; ?></p>
+                                            <?php } ?>
+                                            <?php 
+                                            if(isset($_GET['success'])) { 
+                                            ?>
+                                            <p class="success"><?php echo $_GET['success']; ?></p>
+                                            <?php } ?>
 
-                                        if(isset($error)){
-                                            foreach($error as $error) {
-                                            echo '<p class="errmsg">'.$error.'</p>';
-                                            }
-                                        }
-
-                                        ?>
-                                        <form action="" method="post" style="background-color:transparent;">
                                             <div class="row mt-2">
                                                 <div class="col-md-12 form-group">
-                                                    <label for="current_password"> Current Password:</label>
-                                                    <input type="password" id="current_password" name="current_password"
-                                                        class="form-control" required>
+                                                    <label for="password"> Current Password:</label>
+                                                    <input type="password" id="password" name="op"
+                                                        placeholder="old password" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="row mt-3">
                                                 <div class="col-md-12 form-group">
-                                                    <label for="password"> New Password:</label>
-                                                    <input type="password" id="password" name="password"
-                                                        class="form-control" required>
+                                                    <label for="newpassword"> New Password:</label>
+                                                    <input type="text" id="newpassword" name="np"
+                                                        placeholder="New Password" class="form-control" required>
                                                 </div>
                                                 <div class="col-md-12 form-group">
-                                                    <label for="confirm_password">Confirm New Password:</label>
-                                                    <input type="password" id="confirm_password" name="confirm_password"
-                                                        class="form-control" required>
+                                                    <label for="confirmnewpassword">Confirm New Password:</label>
+                                                    <input type="password" id="confirmnewpassword" name="c_np"
+                                                        placeholder="Confirm New Password" class="form-control"
+                                                        required>
                                                 </div>
                                             </div>
                                             <div class="mt-5 text-center">
-                                                <button class="btn btn-primary profile-button">Change Password</button>
+                                                <button class="btn btn-primary profile-button" value="Update Password"
+                                                    type="submit">Change Password</button>
                                             </div>
                                         </form>
                                     </div>
@@ -263,35 +231,12 @@ if (isset($_SESSION['user_email'])) {
     <script src="assest/jquery.dlmenu.js"></script>
     <script src="assest/bootstrap.js"></script>
     <script src="assest/custom.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('.profile-button').on('click', function() {
-            var user_name = $('#user_name').val();
-            var fullname = $('#fullname').val();
-            var user_phone = $('#user_phone').val();
-            var user_type = $('#user_type').val();
-
-            $.ajax({
-                type: 'POST',
-                url: 'update_profile.php',
-                data: {
-                    user_name: user_name,
-                    fullname: fullname,
-                    user_phone: user_phone,
-                    user_type: user_type
-                },
-                success: function(response) {
-                    // Handle the response after successful update if needed
-                    console.log('Profile updated successfully!');
-                },
-                error: function(error) {
-                    // Handle any error that occurs during the update process
-                    console.error('Error updating profile:', error);
-                }
-            });
-        });
-    });
-    </script>
 </body>
 
 </html>
+<?php 
+} else {
+    header("Location: index.php");
+    exit();
+}
+?>

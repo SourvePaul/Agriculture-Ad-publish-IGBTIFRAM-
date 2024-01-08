@@ -24,11 +24,11 @@ if (isset($_SESSION['user_email'])) {
     $user_type = $row['user_type']; // Define the user_type variable from database
 }
 
-if (isset($_GET['success']) && $_GET['success'] == 1) {
-    $success_message = '<div class="alert alert-success">Profile updated successfully!</div>';
-} elseif (isset($_GET['success']) && $_GET['success'] == 0) {
-    $error_message = '<div class="alert alert-danger">Failed to update profile. Please try again.</div>';
-}
+// if (isset($_GET['success']) && $_GET['success'] == 1) {
+//     $success_message = '<div class="alert alert-success">Profile updated successfully!</div>';
+// } elseif (isset($_GET['success']) && $_GET['success'] == 0) {
+//     $error_message = '<div class="alert alert-danger">Failed to update profile. Please try again.</div>';
+// }
 ?>
 
 <!DOCTYPE html>
@@ -205,6 +205,17 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
                                                     value="<?php echo $row['fullname'] ?>">
                                             </div>
                                         </div>
+
+                                        <?php 
+                                            if(isset($_GET['error'])) { 
+                                            ?>
+                                        <p class="error"><?php echo $_GET['error']; ?></p>
+                                        <?php } ?>
+                                        <?php 
+                                            if(isset($_GET['success'])) { 
+                                            ?>
+                                        <p class="success"><?php echo $_GET['success']; ?></p>
+                                        <?php } ?>
                                         <div class="row mt-3">
                                             <div class="col-md-12">
                                                 <label class="labels" for="user_phone">Mobile Number</label>

@@ -17,6 +17,7 @@ if (isset($_SESSION['user_email'])) {
     $sql = "SELECT * FROM userinfo where user_email='$user_email'";  
     $result = $connection->query($sql);
     $row = $result->fetch_assoc();
+    $user_id = $row['user_id'];
     $user_name = $row['user_name'];
     $user_email = $row['user_email'];
     $fullname = $row['fullname'];
