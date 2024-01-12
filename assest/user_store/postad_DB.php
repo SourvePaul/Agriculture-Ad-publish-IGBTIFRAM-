@@ -21,15 +21,29 @@ require('../../db_connect.php');
     if (!empty($_FILES['multiple_images']['name'][0])) {
         $totalImages = count($_FILES['multiple_images']['name']);
 
-        for ($i = 0; $i < $totalImages; $i++) {
-            $multiple_images = time().$_FILES['multiple_images']['name'][$i];
-            $multipleImageTemp = $_FILES['multiple_images']['tmp_name'][$i];
-
-            // Move each uploaded multiple image to desired location
-            move_uploaded_file($multipleImageTemp, '../../igbtadmin/images/advertisement/' . $multiple_images);
-
-            echo "Multiple Image " . ($i + 1) . " Uploaded: {$multiple_images}";
+        $file='';
+        $file_tmp='';
+        $location="../../igbtadmin/images/advertisement/";
+        $data='';
+        $multiple_images='';
+        foreach($_FILES['multiple_images']['name'] as $key=>$val){
+        $file=$_FILES['multiple_images']['name'][$key];
+        $file_tmp=$_FILES['multiple_images']['tmp_name'][$key];
+        move_uploaded_file($file_tmp,$location.$file);
+        $data.=$file." ";
+        $multiple_images.=$data." ";
         }
+        echo "Multiple Image " . " Uploaded: {$data}";
+
+        // for ($i = 0; $i < $totalImages; $i++) {
+        //     $multiple_images = time().$_FILES['multiple_images']['name'][$i];
+        //     $multipleImageTemp = $_FILES['multiple_images']['tmp_name'][$i];
+
+        //     // Move each uploaded multiple image to desired location
+        //     move_uploaded_file($multipleImageTemp, '../../igbtadmin/images/advertisement/' . $multiple_images);
+
+        //     echo "Multiple Image " . ($i + 1) . " Uploaded: {$multiple_images}";
+        // }
     } else {
         echo "No multiple images uploaded<br>";
     }

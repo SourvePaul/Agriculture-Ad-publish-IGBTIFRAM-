@@ -10,6 +10,18 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
     $username = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : '';
     $isLoggedIn = true;
 }
+if (isset($_SESSION['user_email'])) {
+    $user_email = $_SESSION['user_email'];
+
+    $sql = "SELECT * FROM userinfo where user_email='$user_email'";  
+    $result = $connection->query($sql);
+    $row = $result->fetch_assoc();
+    $user_id = $row['user_id'];
+    $user_name = $row['user_name'];
+    $user_email = $row['user_email'];
+    $fullname = $row['fullname'];
+    $user_type = $row['user_type']; // Define the user_type variable from database
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +45,37 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        margin-top: -20px;
+        border-radius: 5px;
+    }
+
+    .dropdown-menu a {
+        color: #333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: transparent;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
     .listing__products .product-badges.product-badges-position {
         position: absolute;
         left: 10px;

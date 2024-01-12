@@ -34,17 +34,17 @@ if ($result->num_rows > 0) {
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="termsandcondition.php">
                                 Terms & Conditions
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="privacypolicy.php">
                                 Privacy Policy
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="cookie.php">
                                 Cookie Policy
                             </a>
                         </li>
@@ -87,8 +87,11 @@ if ($result->num_rows > 0) {
             <div class="col-3 col-md-2 col-sm-3 ">
                 <div class="footer-pad">
                     <h4 class="title">Our Apps</h4>
-                    <a href="#"><img src="img/app-store-google-play-logo.png" class="img" alt="list-small"
-                            width="100%"></a>
+                    <ul class="px-0">
+                        <li>
+                            <a href="#">Our apps will be avaiable soon</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="col-3 col-md-3 col-sm-3 ">
@@ -149,27 +152,5 @@ if ($result->num_rows > 0) {
         echo "Copyrights © $currentYear. All Rights Reserved.";
         ?>
     </p>
-    <ul class="px-0 d-flex flex-wrap align-items-lg-center justify-content-center">
-        <li>
-            <a href="#">Terms & Conditions</a>
-        </li>
-        <li>
-            <a href="#">\ </a>
-        </li>
-        <li>
-            <a href="#">FAQ’s </a>
-        </li>
-        <li>
-            <a href="#">\</a>
-        </li>
-        <li>
-            <a href="#">Privacy Policy</a>
-        </li>
-        <li>
-            <a href="#">\</a>
-        </li>
-        <li>
-            <a href="#">Sitemap</a>
-        </li>
-    </ul>
+    
 </div>

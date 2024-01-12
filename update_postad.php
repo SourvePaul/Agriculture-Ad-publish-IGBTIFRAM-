@@ -10,23 +10,48 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
     $username = isset($_SESSION['user_name']) ? $_SESSION['user_name'] : '';
     $isLoggedIn = true;
 }
+
 if (isset($_SESSION['user_email'])) {
-    
     $user_email = $_SESSION['user_email'];
 
-    $sql = "SELECT * FROM userinfo where user_email='$user_email'";  
+    $sql = "SELECT * FROM userinfo WHERE user_email='$user_email'";  
     $result = $connection->query($sql);
-    $row = $result->fetch_assoc();
-    $user_name = $row['user_name'];
-    $fullname = $row['fullname'];
-    $user_type = $row['user_type'];
+    
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        
+        // Check if 'user_type' exists in the fetched row
+        if (isset($row['user_type'])) {
+            $user_id = $row['user_id'];
+            $user_name = $row['user_name'];
+            $user_email = $row['user_email'];
+            $fullname = $row['fullname'];
+            $user_type = $row['user_type']; // Define the user_type variable from the database
+        } else {
+            // Handle the case where 'user_type' is not present in the fetched row
+        }
+    } else {
+        // Handle the case where no rows were returned by the query
+    }
+
+
+    // Check if ad_id is passed in the URL
+    if (isset($_GET['ad_id'])) {
+        $ad_id = $_GET['ad_id'];
+
+        // Fetch ad details based on ad_id
+        $sql = "SELECT * FROM ad_info WHERE ad_id = $ad_id";
+        $result = $connection->query($sql);
+
+        if ($result->num_rows > 0) {
+            // Fetch ad details
+            $row12 = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <title>Post Ad</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -74,7 +99,6 @@ if (isset($_SESSION['user_email'])) {
         display: block;
     }
     </style>
-
 </head>
 
 
@@ -93,16 +117,16 @@ if (isset($_SESSION['user_email'])) {
                         ?>
                     </div>
                     <!-- left column -->
-                    <form role="form" id="form" action="assest/user_store/postad_DB.php" method="POST"
+                    <form role="form" id="form" action="assest/user_store/update_postad_DB.php" method="POST"
                         enctype="multipart/form-data">
                         <div class="box-form" style="margin-bottom:-20px;">
                             <div class="col-md-12" style="padding: 20px 1px;">
                                 <input type="hidden" class="form-title" style="padding: 8px 1px;"
-                                    value="<?php echo  $row['user_id']; ?>" name="user_id">
+                                    value="<?php echo  $row12['user_id']; ?>" name="user_id">
 
                                 <h4 class="form-title"
                                     style="width:100%; background-color:#42BC35; color:#fff; text-align:center; align-items:center; justify-content:center; padding:15px 1px; border-radius: 5px;">
-                                    Post Ad</h4>
+                                    Update Post Ad</h4>
                             </div>
                             <div class="col-md-12">
                                 <!-- general form elements -->
@@ -115,28 +139,32 @@ if (isset($_SESSION['user_email'])) {
                                             <label for="exampleInputAdTitle"
                                                 style="padding: 8px 0px; font-weight:bold;">Ad-Title</label>
                                             <input type="text" class="form-control" id="exampleInputAdTitle"
-                                                name="ad_title" required>
+                                                name="ad_title" value="<?php echo  $row12['ad_title']; ?>" required>
                                         </div>
                                         <div class="form-group" style="padding: 5px 1px;">
                                             <label for="exampleInputAdDescription"
                                                 style="padding: 8px 0px; font-weight:bold;">Ad-Description</label>
                                             <textarea id="exampleInputAdDescription" name="ad_description" rows="4"
                                                 cols="50" class="form-control" required>
+                                                <?php echo  $row12['ad_description']; ?>
                                             </textarea>
                                         </div>
                                         <div class="form-group" style="padding: 5px 1px;">
                                             <label style="padding: 8px 0px; font-weight:bold;">Category</label>
-                                            <select class="form-control" name="cat_id" id="category-select" required="">
+                                            <select class="form-control" name="cat_id" id="category-select" required>
                                                 <option value="">---Select Category---</option>
                                                 <?php
                                                 // Read data
                                                 $sql = "SELECT * FROM categories ORDER BY cat_name ASC";
                                                 $result = $connection->query($sql);
                                                 // output data of each row  
-                                                while($row = $result->fetch_assoc()) {  
+                                                while($cat_row = $result->fetch_assoc()) {  
+                                                    $selected = ($cat_row['cat_id'] == $row12['cat_id']) ? 'selected' : '';
                                                 ?>
-                                                <option value="<?php echo $row['cat_id']; ?>">
-                                                    <?php echo $row['cat_name']; ?></option>
+                                                <option value="<?php echo $cat_row['cat_id']; ?>"
+                                                    <?php echo $selected; ?>>
+                                                    <?php echo $cat_row['cat_name']; ?>
+                                                </option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -149,13 +177,13 @@ if (isset($_SESSION['user_email'])) {
                                             <label for="exampleInputAdPrice"
                                                 style="padding: 8px 0px; font-weight:bold;">Ad-Price</label>
                                             <input type="number" class="form-control" id="exampleInputAdPrice"
-                                                name="ad_price" required>
+                                                name="ad_price" value="<?php echo  $row12['ad_price']; ?>" required>
                                         </div>
                                         <div class="form-group" style="padding: 5px 1px;">
                                             <label for="exampleInputAdPhone"
                                                 style="padding: 8px 0px; font-weight:bold;">Ad-Phone</label>
                                             <input type="number" class="form-control" id="exampleInputAdPhone"
-                                                name="ad_phone" required>
+                                                name="ad_phone" value="<?php echo  $row12['ad_phone']; ?>" required>
                                         </div>
                                         <div class="form-group" style="padding: 5px 1px;">
                                             <label for="exampleInputAdLocation"
@@ -165,32 +193,51 @@ if (isset($_SESSION['user_email'])) {
                                                 <option value="">---Select Location---</option>
                                                 <?php
                                                 // Read data
-                                                $sql = "SELECT * FROM locations ORDER BY location_title ASC";
+                                                $sql = "SELECT * FROM locations ORDER BY location_id ASC";
                                                 $result = $connection->query($sql);
                                                 // output data of each row  
-                                                while($row = $result->fetch_assoc()) {  
+                                                while($loc_row = $result->fetch_assoc()) {  
+                                                    $selected = ($loc_row['location_id'] == $row12['ad_location']) ? 'selected' : '';
                                                 ?>
-                                                <option value="<?php echo $row['location_id']; ?>">
-                                                    <?php echo $row['location_title']; ?></option>
+                                                <option value="<?php echo $loc_row['location_id']; ?>"
+                                                    <?php echo $selected; ?>>
+                                                    <?php echo $loc_row['location_title']; ?>
+                                                </option>
                                                 <?php } ?>
                                             </select>
                                         </div>
 
                                         <div class="form-group" style="padding: 10px 1px;">
                                             <label for="exampleInputAdFeatureImage"
-                                                style="padding: 8px 0px; font-weight:bold;">Ad-Feature
-                                                Image</label>
+                                                style="padding: 8px 0px; font-weight:bold;">Ad-Feature Image</label>
                                             <input type="file" class="form-control" id="exampleInputAdFeatureImage"
                                                 accept="image/*" name="ad_feature_image">
+                                            <img src="<?php echo  'igbtadmin/images/advertisement/' . $row12['ad_feature_image']; ?>"
+                                                alt="Feature Image Preview" style="width: 40px; height: 40px;">
                                         </div>
                                         <div class="form-group" style="padding: 10px 1px;">
                                             <label for="exampleInputAdMultipleImage"
                                                 style="padding: 8px 0px; font-weight:bold;">Ad-Multiple Image</label>
                                             <input type="file" name="multiple_images[]" multiple class="form-control"
                                                 id="exampleInputAdMultipleImage" accept="image/*">
+
+                                            <?php
+                                            $res = $row12['multiple_images'];
+                                            $res = explode(" ", $res);
+
+                                            foreach ($res as $image) {
+                                                $imagePath = 'igbtadmin/images/advertisement/' . $image;
+
+                                                // Check if the image path is not empty and the file exists
+                                                if (!empty($image) && file_exists($imagePath)) {
+                                                    echo '<img src="' . $imagePath . '" height="40px" width="40px" />';
+                                                }
+                                            }
+                                            ?>
                                         </div>
                                         <div class="box-footer" style="padding: 15px 1px; margin-bottom: -40px;">
-                                            <button type="submit"
+                                            <input type="hidden" name="ad_id" value="<?php echo  $row12['ad_id']; ?>">
+                                            <button type="submit" name="update"
                                                 class="btn btn-success btn-hover-animate d-flex align-items-center justify-content-center fw-bold">
                                                 <div class="text">Save Post</div>
                                             </button>
@@ -245,11 +292,15 @@ if (isset($_SESSION['user_email'])) {
 
 </html>
 <?php
-
-} 
-else {
-    header ('Location: signin.php'); 
+        } else {
+            echo "No ad found with the specified ad_id for the logged-in user.";
+        }
+    } else {
+        echo "ad_id is not provided in the URL.";
+    }
+} else {
+    header('Location: signin.php');
     exit();
-    }    
-    ob_flush();
+}
+ob_flush();
 ?>

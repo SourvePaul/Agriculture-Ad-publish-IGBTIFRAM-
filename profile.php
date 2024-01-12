@@ -146,15 +146,6 @@ if (isset($_SESSION['user_email'])) {
     <div id="page-preloader"><span class="spinner border-t_second_b border-t_prim_a"></span></div>
     <!-- Loader end-->
 
-    <?php
-     // Display the success or error message if set
-     if (isset($success_message)) {
-        echo $success_message;
-    } elseif (isset($error_message)) {
-        echo $error_message;
-    }
-    ?>
-
     <div class="wrapper">
         <?php include "header.php"; ?>
 
@@ -224,7 +215,7 @@ if (isset($_SESSION['user_email'])) {
                                             </div>
                                             <div class="col-md-12">
                                                 <label class="labels" for="user_type">User Type (Current Type:
-                                                    <?php echo $user_type; ?>)</label>
+                                                    <?php echo  $row['user_type'] ?>)</label>
                                                 <select id="user_type" class="form-control" required>
                                                     <option>Choose a type of User</option>
                                                     <option value="seller" name="user_type">Seller</option>

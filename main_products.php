@@ -43,8 +43,8 @@
                         // Update this section to include dynamic h3 elements with links <h3><a href="' . $row["link_url"] . '">' . $row["title"] . '</a></h3>
                         $output .= '
                             <img src="igbtadmin/images/banner/' . $row["banner_img"] . '" alt="banner_img" style="height: 215px; width:100%;">
-                            <div class="carousel-caption" style="text-align:right;">
-                            <h3><a href="index.php?cat_id=' .  $row["cat_id"] . '" style="text-decoration:none;">' . $shortened_title . '</a></h3>
+                            <div class="carousel-caption" style="text-align:center;">
+                            <h3><a href="index.php?cat_id=' .  $row["cat_id"] . '" style="text-decoration:none; color:white;font-weight:bold;">' . $shortened_title . '</a></h3>
             </div>
             ';
 

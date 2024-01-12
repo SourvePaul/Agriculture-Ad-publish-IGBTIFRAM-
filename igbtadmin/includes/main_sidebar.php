@@ -30,6 +30,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li><a href="index.php"><i class="fa fa-dashboard"></i> <span>Home</span></a></li>
             <li><a href="change-banner.php"><i class="fa fa-cart-plus"></i> Change Home Page Banner 1</a></li>
+            <li><a href="add_location.php"><i class="fa fa-cart-plus"></i> Location's</a></li>
             <li><a href="sales-addnp.php"><i class="fa fa-cart-plus"></i> Sales no Print</a></li>
             <li class="treeview">
                 <a href="#">

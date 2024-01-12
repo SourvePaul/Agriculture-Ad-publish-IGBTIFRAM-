@@ -14,14 +14,25 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
 if (isset($_SESSION['user_email'])) {
     $user_email = $_SESSION['user_email'];
 
-    $sql = "SELECT * FROM userinfo where user_email='$user_email'";  
+    $sql = "SELECT * FROM userinfo WHERE user_email='$user_email'";  
     $result = $connection->query($sql);
-    $row = $result->fetch_assoc();
-    $user_id = $row['user_id'];
-    $user_name = $row['user_name'];
-    $user_email = $row['user_email'];
-    $fullname = $row['fullname'];
-    $user_type = $row['user_type']; // Define the user_type variable from database
+    
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        
+        // Check if 'user_type' exists in the fetched row
+        if (isset($row['user_type'])) {
+            $user_id = $row['user_id'];
+            $user_name = $row['user_name'];
+            $user_email = $row['user_email'];
+            $fullname = $row['fullname'];
+            $user_type = $row['user_type']; // Define the user_type variable from the database
+        } else {
+            // Handle the case where 'user_type' is not present in the fetched row
+        }
+    } else {
+        // Handle the case where no rows were returned by the query
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -280,11 +291,7 @@ if (isset($_SESSION['user_email'])) {
                                                         ?>
                                                     </p>
                                                 </div>
-                                                <div class="modal_right_title">
-
-                                                    <input type="text" class="input_modal_search"
-                                                        placeholder="Find state, city or district......" name="">
-                                                </div>
+                                               
                                             </div>
                                             <div class="modal-body">
                                                 <main class="main-modal col-xl-12">
@@ -330,7 +337,7 @@ if (isset($_SESSION['user_email'])) {
                                                                                 href="#" role="button"
                                                                                 data-bs-toggle="dropdown"
                                                                                 aria-expanded="false">
-                                                                                Rivers State
+                                                                                Rivers State(1)
                                                                             </a>
                                                                         </li>
                                                                         <li class="list-group-item"><a
@@ -338,7 +345,7 @@ if (isset($_SESSION['user_email'])) {
                                                                                 href="#" role="button"
                                                                                 data-bs-toggle="dropdown"
                                                                                 aria-expanded="false">
-                                                                                Abia State
+                                                                                Abia State(1)
                                                                             </a>
                                                                         </li>
                                                                         <li class="list-group-item"><a
@@ -416,7 +423,7 @@ if (isset($_SESSION['user_email'])) {
                                                                                 href="#" role="button"
                                                                                 data-bs-toggle="dropdown"
                                                                                 aria-expanded="false">
-                                                                                Ebonyi State
+                                                                                Ebonyi State(1)
                                                                             </a>
                                                                         </li>
                                                                         <li class="list-group-item"><a
@@ -424,7 +431,7 @@ if (isset($_SESSION['user_email'])) {
                                                                                 href="#" role="button"
                                                                                 data-bs-toggle="dropdown"
                                                                                 aria-expanded="false">
-                                                                                Edo State
+                                                                                Edo State(1)
                                                                             </a>
                                                                         </li>
                                                                         <li class="list-group-item"><a
@@ -432,7 +439,7 @@ if (isset($_SESSION['user_email'])) {
                                                                                 href="#" role="button"
                                                                                 data-bs-toggle="dropdown"
                                                                                 aria-expanded="false">
-                                                                                Ekiti State
+                                                                                Ekiti State(1)
                                                                             </a>
                                                                         </li>
                                                                         <li class="list-group-item"><a
@@ -488,7 +495,7 @@ if (isset($_SESSION['user_email'])) {
                                                                                 href="#" role="button"
                                                                                 data-bs-toggle="dropdown"
                                                                                 aria-expanded="false">
-                                                                                Katsina State
+                                                                                Katsina State(1)
                                                                             </a>
                                                                         </li>
                                                                     </ul>

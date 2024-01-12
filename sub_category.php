@@ -3,7 +3,8 @@ require_once('db_connect.php');
 ?>
 <section class="content">
     <div class="row" id="main_slider_post_button">
-        <div class="col-md-8">
+
+        <div class="col-12 col-sm-12 col-md-8" style="position:relative;">
             <div class="container-slide slider_do" style="padding: 26px 0px;">
                 <?php
                  function make_query($connection) {
@@ -16,7 +17,7 @@ require_once('db_connect.php');
                  $output = '';
                  $count = 0;
                  $result = make_query($connection);
-                 while($ads_row = mysqli_fetch_array($result)) {
+                 while($row = mysqli_fetch_array($result)) {
                     if($count == 0) {
                     $output .= '<li data-target="#dynamic_slide_show" data-slide-to="'.$count.'" class="active"></li>';
                     } else {
@@ -27,27 +28,38 @@ require_once('db_connect.php');
                  return $output;
                 }
 
-                 function make_slides($connection) {
-                 $output = '';
-                 $count = 0;
-                 $result = make_query($connection);
-                 while($row = mysqli_fetch_array($result)) {
-                 if($count == 0) {
-                    $output.= '<div class="item active">';
-                    }else {
-                    $output.= '<div class="item">';
-                    } /* <h3>"Hello"</h3>*/
-                    $output.= '<img src="igbtadmin/images/banner/'.$row["banner_img"].'" alt="banner_img"/ style="height: 215px;">
-                    <div class="carousel-caption">
-                                                                                            
-                        </div>
-                    </div>
-                    ';
-                 $count = $count + 1;
-                 }
-                 return $output;
-                 }
-                ?>
+                function make_slides($connection) {
+                    $output = '';
+                    $count = 0;
+                    $result = make_query($connection);
+                
+                    while ($row = mysqli_fetch_array($result)) {
+                        if ($count == 0) {
+                            $output .= '<div class="item active">';
+                        } else {
+                            $output .= '<div class="item">';
+                        }
+
+                        $title_words = explode(' ', $row["banner_title"]);
+                        $shortened_title = implode(' ', array_slice($title_words, 0, 10));
+                
+                        // Update this section to include dynamic h3 elements with links <h3><a href="' . $row["link_url"] . '">' . $row["title"] . '</a></h3>
+                        $output .= '
+                            <img src="igbtadmin/images/banner/' . $row["banner_img"] . '" alt="banner_img" style="height: 215px; width:100%;">
+                            <div class="carousel-caption" style="text-align:center;">
+                            <h3><a href="index.php?cat_id=' .  $row["cat_id"] . '" style="text-decoration:none;color:white; font-weight:bold;">' . $shortened_title . '</a></h3>
+            </div>
+            ';
+
+            $output .= '
+        </div>';
+        $count = $count + 1;
+        }
+
+        return $output;
+        }
+
+        ?>
 
                 <div class="b-main-page__banners_block__sliders">
                     <div id="dynamic_slide_show" class="carousel slide" data-ride="carousel" style="height: 215px;">
@@ -69,9 +81,8 @@ require_once('db_connect.php');
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="col-md-4">
+        <div class="col-12 col-sm-12 col-md-4">
             <div class="container-bottom" style="padding: 25px 0px;">
                 <div class="b-main-page__banners_block__banner">
                     <div class="b-post-advert-banner b-main-page__post-advert-banner">

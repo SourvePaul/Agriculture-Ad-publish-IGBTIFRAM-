@@ -14,6 +14,14 @@ if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
 if (isset($_SESSION['user_id']) || isset($_SESSION['user_email']) ) {
     $user_email = $_SESSION['user_email'];
 
+    $sql = "SELECT * FROM userinfo where user_email='$user_email'";  
+    $result = $connection->query($sql);
+    $row = $result->fetch_assoc();
+
+    $user_name = $row['user_name'];
+    $user_email = $row['user_email'];
+    $fullname = $row['fullname'];
+    $user_type = $row['user_type']; // Define the user_type variable from database
 ?>
 
 <!DOCTYPE html>

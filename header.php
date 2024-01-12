@@ -39,20 +39,6 @@
         <?php } ?>
     </div>
     <header class="fl-header fl-header-single fl-header-type1">
-        <!-- style="margin-top: -25px; -->
-        <!-- <nav class="fl-mega-menu nav-menu">
-            <ul id="menu-main-menu-1" class="menu nav-menu">
-                <li class="nav-item">
-                    <a href="index.php" class="menu-link main-menu-link item-title">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="li" class="menu-link main-menu-link item-title">All Adds</a>
-                </li>
-                <li class="nav-item ">
-                    <a href="#" class="menu-link main-menu-link item-title">News</a>
-                </li>
-            </ul>
-        </nav> -->
         <div class="col-sm-3 col-md-2 col-xl-2">
             <div class="nav-logo d-flex align-items-center">
                 <a class="logo-img" href="index.php">
@@ -91,6 +77,13 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="profile.php">Profile</a>
                             <a class="dropdown-item" href="cPassword.php">Settings</a>
+                            <?php
+                            // Check if the user is a seller (replace this condition with your actual logic)
+                            // Replace this with the actual user type check
+                            if (isset($user_type) && ($user_type === 'seller' || $user_type === 'admin')) {
+                                echo '<a class="dropdown-item" href="my_ads.php">My Ads</a>';
+                            }
+                            ?>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="main_logout.php">Logout</a>
                         </div>
