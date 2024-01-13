@@ -1,9 +1,31 @@
 <?php 
   require_once('php_action/db_connection_checker.php'); 
   require_once('php_action/db_connect.php'); 
+  $error = ""; // Initialize $error variable
+  $msg = "";   // Initialize $msg variable
   if($_SESSION['adminType']=='sales'){
     header('Location: 404-error.php');
   }
+
+  if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit']) && $_POST['submit'] == "update") {
+    $pageType = isset($_GET['type_info']) ? $_GET['type_info'] : '';
+    $detail = $_POST['detail'];
+    $sql2 = "UPDATE pages SET detail=? WHERE types=?";
+    $stmt = $connection->prepare($sql2);
+
+    // Bind the parameters
+    $stmt->bind_param("ss", $detail, $pageType);
+
+    // Execute the statement
+    $result2 = $stmt->execute();
+    if (!$result2) {
+        $error = "Error: " . $connection->error;
+    } else {
+        $msg = "Page data updated successfully";
+    }
+    // Close the statement
+    $stmt->close();
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,8 +64,31 @@
     <!-- Google Font -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <style>
+    .errorWrap {
+        padding: 10px;
+        margin: 0 0 20px 0;
+        background: #fff;
+        border-left: 4px solid #dd3d36;
+        -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+    }
 
-
+    .succWrap {
+        padding: 10px;
+        margin: 0 0 20px 0;
+        background: #fff;
+        border-left: 4px solid #5cb85c;
+        -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+    }
+    </style>
+    <script>
+    function MM_jumpMenu(targ, selObj, restore) { //v3.0
+        eval(targ + ".location='" + selObj.options[selObj.selectedIndex].value + "'");
+        if (restore) selObj.selectedIndex = 0;
+    }
+    </script>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -60,142 +105,129 @@
 
                 <section class="content-header">
                     <h1>
-                        Add Advertisement Information
+                        Update Page's Data
                     </h1>
                 </section>
+                <?php if($error){?>
+                <div class="errorWrap"><strong>ERROR</strong>:
+                    <?php echo htmlentities($error); ?>
+                </div>
+                <?php } else if($msg){?>
+                <div class="succWrap"><strong>SUCCESS</strong>:
+                    <?php echo htmlentities($msg); ?>
+                </div>
+                <?php }?>
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
                         <!-- left column -->
-                        <form role="form" id="form" action="php_action/store/ad-info.php" method="POST"
-                            enctype="multipart/form-data">
-                            <div class="col-md-6">
-                                <!-- general form elements -->
-                                <div class="box box-primary">
-                                    <div class="box-header with-border"></div>
-                                    <!-- /.box-header -->
-                                    <!-- form start -->
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label for="exampleInputAdTitle">Ad-Title</label>
-                                            <input type="text" class="form-control" id="exampleInputAdTitle"
-                                                name="ad_title" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputAdDescription">Ad-Description</label>
-                                            <textarea id="exampleInputAdDescription" name="ad_description" rows="4"
-                                                cols="50" class="form-control" required>
-                                            </textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Category</label>
-                                            <select class="form-control " name="cat_id" id="category-select"
-                                                required="">
-                                                <option value="">---Select Category---</option>
-                                                <?php
-                                                // Read data
-                                                $sql = "SELECT * FROM categories ORDER BY cat_name ASC";
-                                                $result = $connection->query($sql);
-                                                // output data of each row  
-                                                while($row = $result->fetch_assoc()) {  
-                                                ?>
-                                                <option value="<?php echo $row['cat_id']; ?>">
-                                                    <?php echo $row['cat_name']; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                        <label>Sub-Category</label>
-                                        <select class="form-control " name="sub_cat_id" id="subcategory-select">
-                                        </select><br>
-                                        <div class="form-group">
-                                            <label for="exampleInputAdPrice">Ad-Price</label>
-                                            <input type="number" class="form-control" id="exampleInputAdPrice"
-                                                name="ad_price" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.box-body -->
-                            </div>
-                            <div class="col-md-6">
+                        <form role="form" name="package" id="form" action="" method="POST" enctype="">
+                            <div class="col-md-12">
                                 <div class="box box-primary">
                                     <div class="box-header with-border"></div>
                                     <div class="box-body">
+
                                         <div class="form-group">
-                                            <label for="exampleInputAdPhone">Ad-Phone</label>
-                                            <input type="number" class="form-control" id="exampleInputAdPhone"
-                                                name="ad_phone" required>
-                                        </div>
+                                            <label for="focusedinput" class="col-md-2 control-label">Select page</label>
+                                            <div class="col-md-8">
+                                                <select name="menu1" onChange="MM_jumpMenu('parent',this,0)"
+                                                    class="from-control">
+                                                    <option value="" selected="selected">
+                                                        ***Select One Option***
+                                                    </option>
+                                                    <option value="manage_pages.php?type_info=terms">
+                                                        Terms and Condition
+                                                    </option>
+                                                    <option value="manage_pages.php?type_info=privacy">
+                                                        Privacy and policy
+                                                    </option>
+                                                    <option value="manage_pages.php?type_info=cookieP">
+                                                        Cookie Policy
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div><br />
+
                                         <div class="form-group">
-                                            <label for="exampleInputAdLocation">Ad-Location</label>
-                                            <input type="text" class="form-control" id="exampleInputAdLocation"
-                                                name="ad_location" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>User</label>
-                                            <select class="form-control select2" name="user_id">
-                                                <!-- required="" -->
-                                                <option value="">---Select---</option>
+                                            <label for="focusedinput" class="col-md-2 control-label">
+                                                Selected Page
+                                            </label>
+                                            <div class="col-md-8 from-control">
                                                 <?php
-                                                // Read data
-                                                $sql = "SELECT * FROM userinfo ORDER BY user_name ASC";
-                                                $result = $connection->query($sql);
-                                                // output data of each row  
-                                                while($row = $result->fetch_assoc()) {  
+                                                    $pageType = isset($_GET['type_info']) ? $_GET['type_info'] : '';
+                                                    if ($pageType != '') {
+                                                        switch ($pageType) {
+                                                            case "terms":
+                                                                echo "Terms and Conditions";
+                                                                break;
+                                                            case "privacy":
+                                                                echo "Privacy And Policy";
+                                                                break;
+                                                            case "aboutus":
+                                                                echo "About US";
+                                                                break;
+                                                            case "software" :
+                                                                echo "Offers";
+                                                                break;	
+                                                            case "aspnet" :
+                                                                echo "Vission And MISSION";
+                                                                break;
+                                                            case "objectives" :
+                                                                echo "Objectives";
+                                                                break;
+                                                            case "disclaimer" :
+                                                                echo "Disclaimer";
+                                                                break;
+                                                            case "vbnet" :
+                                                                echo "Partner With Us";
+                                                                break;
+                                                            case "cookieP" :
+                                                                echo "Cookie Policy";
+                                                                break;        
+                                                            case "contact" :
+                                                                echo "Contact Us";
+                                                                break;
+                                                            default:
+                                                                echo "";
+                                                                break;
+                                                        }
+                                                    } else {
+                                                        echo "Page not selected";
+                                                        // You can display a default page or show an error message here
+                                                    }
                                                 ?>
-                                                <option value="<?php echo $row['user_id']; ?>">
-                                                    <?php echo $row['user_name']; ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
+                                            </div>
+                                        </div><br />
+
                                         <div class="form-group">
-                                            <label for="exampleInputAdFeatureImage">Ad-Feature Image</label>
-                                            <input type="file" class="form-control" id="exampleInputAdFeatureImage"
-                                                accept="image/*" name="ad_feature_image">
-                                        </div>
+                                            <label for="focusedinput" class="col-md-2 control-label">
+                                                Page Details
+                                            </label>
+                                            <div class="col-md-8 ">
+                                                <textarea rows="6" cols="50" name="detail" id="details"
+                                                    placeholder="Page Details Here..." class="form-control" required>
+                                                    <?php 
+                                                    $pageType = isset($_GET['type_info']) ? $_GET['type_info'] : '';
+                                                    $sql1 = "SELECT detail FROM pages WHERE types='$pageType'";
+                                                    $result1 = $connection->query($sql1);
+                                                    if($result1->num_rows > 0){
+                                                        $row1 = $result1->fetch_assoc();
+                                                        echo htmlentities($row1['detail']);
+                                                    }
+                                                    ?>		
+                                                </textarea>
+                                            </div>
+                                        </div><br />
+
                                         <div class="form-group">
-                                            <label for="exampleInputAdMultipleImage">Ad-Multiple Image</label>
-                                            <input type="file" name="multiple_images[]" multiple class="form-control"
-                                                id="exampleInputAdMultipleImage" accept="image/*">
-                                        </div>
-                                        <div class="box-footer">
-                                            <button type="submit" class="btn btn-success pull-right"><i
-                                                    class="fa fa-plus-circle"></i> Add Info</button>
+                                            <button type="submit" name="submit" id="submit"
+                                                class="btn btn-success pull-right" value="update"><i
+                                                    class="fa fa-submit"></i>Update</button>
                                         </div>
                                     </div>
                                 </div>
                             </div> <!-- 148 -->
-                            <div class="col-md-6">
-                                <?php  
-                                    if(isset($_SESSION['message'])){
-                                    echo $_SESSION['message'];
-                                    $_SESSION['message'] = NULL;
-                                    }
-                                ?>
-                            </div>
                         </form>
-                        <script>
-                        function updateSubcategories() {
-                            var cat_select = document.getElementById("category-select");
-                            var subcat_select = document.getElementById("subcategory-select");
-
-                            var cat_id = cat_select.options[cat_select.selectedIndex].value;
-
-                            var url = 'subcategories.php?category_id=' + cat_id;
-
-                            var xhr = new XMLHttpRequest();
-                            xhr.open('GET', url, true);
-                            xhr.onreadystatechange = function() {
-                                if (xhr.readyState == 4 && xhr.status == 200) {
-                                    subcat_select.innerHTML = xhr.responseText;
-                                    subcat_select.style.display = 'inline';
-                                }
-                            }
-                            xhr.send();
-                        }
-
-                        var cat_select = document.getElementById("category-select");
-                        cat_select.addEventListener("change", updateSubcategories);
-                        </script>
                     </div>
                 </section>
             </section>
@@ -395,8 +427,7 @@
             </div>
         </aside>
         <!-- /.control-sidebar -->
-        <!-- Add the sidebar's background. This div must be placed
-            immediately after the control sidebar -->
+        <!-- immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
     </div>
     <!-- ./wrapper -->
@@ -507,6 +538,15 @@
         })
     })
     </script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+    <script>
+    ClassicEditor
+        .create(document.querySelector('#details'))
+        .catch(error => {
+            console.error(error);
+        });
+    </script>
+
 </body>
 
 </html>

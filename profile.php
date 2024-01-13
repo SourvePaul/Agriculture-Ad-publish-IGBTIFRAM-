@@ -268,11 +268,11 @@ if (isset($_SESSION['user_email'])) {
                 },
                 success: function(response) {
                     // Handle the response after successful update if needed
-                    console.log('Profile updated successfully!');
+                    alert('Profile updated successfully!');
                 },
                 error: function(error) {
                     // Handle any error that occurs during the update process
-                    console.error('Error updating profile:', error);
+                    alert('Error updating profile:', error);
                 }
             });
         });

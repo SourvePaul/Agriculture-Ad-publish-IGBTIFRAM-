@@ -76,6 +76,19 @@
                     <li><a href="footer-image-list.php"><i class="fa fa-list"></i> All Image-List</a></li>
                 </ul>
             </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-file-text-o"></i>
+                    <span> Manage Pages</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="manage_pages.php"><i class="fa fa-plus-circle"></i> Manage All Pages </a></li>
+                </ul>
+            </li>
             <!--
       <li><a href="barcode.php"><i class="fa fa-barcode"></i> <span>Barcode print 2 Column</span></a></li>  
       <li><a href="barcode2.php"><i class="fa fa-barcode"></i> <span>Barcode print 3 Column</span></a></li>    

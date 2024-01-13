@@ -34,17 +34,17 @@ if ($result->num_rows > 0) {
                             </a>
                         </li>
                         <li>
-                            <a href="termsandcondition.php">
+                            <a href="termsandcondition.php?type_info=terms">
                                 Terms & Conditions
                             </a>
                         </li>
                         <li>
-                            <a href="privacypolicy.php">
+                            <a href="privacypolicy.php?type_info=privacy">
                                 Privacy Policy
                             </a>
                         </li>
                         <li>
-                            <a href="cookie.php">
+                            <a href="cookie.php?type_info=cookieP">
                                 Cookie Policy
                             </a>
                         </li>
@@ -152,5 +152,5 @@ if ($result->num_rows > 0) {
         echo "Copyrights © $currentYear. All Rights Reserved.";
         ?>
     </p>
-    
+
 </div>

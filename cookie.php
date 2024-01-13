@@ -84,27 +84,36 @@ if (isset($_SESSION['user_email'])) {
 
         <main class="main">
             <div class="container__1620">
+                <section class="first__screen">
+                    <div class="row">
+                        <div class="col-md-12" style="padding: 20px 0px;padding-bottom: 55px;">
+                            <h4 class="text-center text-white" style="font-weight:bold;">iGbetiFarm is the Best
+                                Marketplace to Buy & sell Your
+                                Agricultural products quickly</h4><br />
+
+                            <h3 class="text-center text-white" style="font-weight:bold;">Cookie Policy</h3>
+                        </div>
+                    </div>
+                </section>
                 <div id="main-content">
                     <div class="container">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+                                <?php 
+                                $pageType = isset($_GET['type_info']) ? $_GET['type_info'] : '';
+                                $sql1 = "SELECT detail FROM pages WHERE types='$pageType'";
+                                $result1 = $connection->query($sql1);
+                                  if($result1->num_rows > 0){
+                                ?>
                                 <div class="post-container">
-
- <h1>What are Cookies</h1>
-Cookies are small text files that websites place on the computers and mobile devices of people who visit those websites.
-
-These text files allow a website to remember your device and how you interacted with the website, which is useful for a number of different purposes.
-
-For example, cookies can be used to remember username and password information so that you don't have to re-enter all of your login information every time you visit a site you frequently log in to.
-
-Other functions of cookies are to provide custom advertising to users based on searches and personal interests, as well as site performance cookies that enhance website use by remembering things such as custom video streaming or volume settings you have selected while using the website in the past.
-
-If you use cookies, you should consider having a Cookies Policy. In fact, you may be legally required to have one.
-   
-      
-                               </div>
+                                    <input type="hidden" value="<?php	echo $_GET['type_info'] ?>" name="types">
+                                    <?php     
+                                    $row1 = $result1->fetch_assoc();
+                                    echo $row1['detail'];
+                                        }    
+                                    ?>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

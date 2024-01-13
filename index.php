@@ -264,7 +264,8 @@ if (isset($_SESSION['user_email'])) {
                             <h6 class="text-white d-flex justify-content-center mt-3 gap-2" style="padding-top: 14px;">
                                 Find anything in
                                 <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
-                                    data-target="#myModal" style="margin: -8px 0px;">
+                                    data-target="#myModal"
+                                    style="margin: -8px 0px; background-color: #8a288f !important;">
                                     All Nigeria
                                 </button>
 
@@ -291,317 +292,49 @@ if (isset($_SESSION['user_email'])) {
                                                         ?>
                                                     </p>
                                                 </div>
-                                               
+
                                             </div>
                                             <div class="modal-body">
                                                 <main class="main-modal col-xl-12">
                                                     <div class="container">
-                                                        <div class="row">
-                                                            <div class="col-2">
-                                                                <div class="card" style="width: 18rem;">
-                                                                    <ul class="list-group list-group-flush">
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Abuja (FCT)
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Lagos State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Ogun State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Oyo State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Rivers State(1)
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Abia State(1)
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Adamawa State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Akwa Ibom State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Anambra State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Bauchi State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Bayelsa State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Benue State
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-2">
-                                                                <div class="card" style="width: 18rem;">
-                                                                    <ul class="list-group list-group-flush">
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Cross River State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Delta State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Ebonyi State(1)
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Edo State(1)
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Ekiti State(1)
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Enugu State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Gombe State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Imo State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Jigawa State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Kaduna State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Kano State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Katsina State(1)
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-2">
-                                                                <div class="card" style="width: 18rem;">
-                                                                    <ul class="list-group list-group-flush">
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Kogi State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Kwara State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Nasarawa State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Niger State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Ondo State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Osun State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Plateau State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Sokoto State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Taraba State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Yobe State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="text-black dropdown-toggle"
-                                                                                href="#" role="button"
-                                                                                data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
-                                                                                Zamfara State
-                                                                            </a>
-                                                                        </li>
-                                                                        <li class="list-group-item"><a
-                                                                                class="dropdown-toggle" href="#"
-                                                                                role="button" data-bs-toggle="dropdown"
-                                                                                aria-expanded="false">
+                                                        <div class="row" style="margin-right:none;">
+                                                            <?php
+                                                                $sql44 = "SELECT location_id, location_title FROM locations";
+                                                                $result = $connection->query($sql44);
+                                                            ?>
+                                                            <div class="col-2" style="padding-left:0px;">
+                                                                <?php
+                                                            $count = 0;
+                                                            while ($row44 = $result->fetch_assoc()) {
+                                                                // Query ad_info table to get the count of ads for each location
+                                                                $locationId = $row44['location_id'];
+                                                                $adCountSql = "SELECT COUNT(*) AS ad_count FROM ad_info WHERE ad_location = $locationId";
+                                                                $adCountResult = $connection->query($adCountSql);
+                                                                $adCountRow = $adCountResult->fetch_assoc();
+                                                                $adCount = $adCountRow['ad_count'];
 
+                                                                echo '<div class="card" style="width: 18rem; height: 35px;">
+                                                                    <ul class="list-group list-group-flush">
+                                                                        <li class="list-group-item">
+                                                                            <a class="text-black" href="index.php?location_id=' . $row44['location_id'] . '"">
+                                                                                ' . $row44['location_title'] . ' (' . $adCount . ' Ads)
                                                                             </a>
                                                                         </li>
                                                                     </ul>
-                                                                </div>
+                                                                </div>';
+
+                                                                // Check if 12 items are displayed, then start a new column
+                                                                $count++;
+                                                                if ($count == 12) {
+                                                                    echo '</div><div class="col-2">';
+                                                                    $count = 0;
+                                                                }
+                                                            }
+                                                            ?>
                                                             </div>
+
+
+
                                                         </div>
                                                     </div>
                                                 </main>
@@ -723,6 +456,8 @@ if (isset($_SESSION['user_email'])) {
                                                 include "category.php";
                                             } elseif (isset($_GET['sub_cat_id'])) {
                                                 include "sub_category.php";
+                                            }  elseif (isset($_GET['location_id'])) {
+                                                include "location_show.php";
                                             } elseif (!isset($_GET['cat_id']) && !isset($_GET['sub_cat_id'])) {
                                                 include "main_products.php";
                                             }
