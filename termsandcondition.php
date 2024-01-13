@@ -91,10 +91,8 @@ if (isset($_SESSION['user_email'])) {
                                 Agricultural products quickly</h4><br />
 
                             <h3 class="text-center text-white" style="font-weight:bold;">Terms & Conditions</h3>
-
                         </div>
                     </div>
-
                 </section>
                 <div id="main-content">
                     <div class="container">

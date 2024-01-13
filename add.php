@@ -42,6 +42,37 @@ $result = mysqli_query($connection, $sql) or die("Query failed from users.");
     <link rel="stylesheet" href="fonts/icomoon2/style.css">
     <link rel="stylesheet" href="fonts/icomoon1/style.css">
     <style>
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.5);
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        margin-top: 230px;
+        border-radius: 5px;
+    }
+
+    .dropdown-menu a {
+        color: #333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: transparent;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
     .aside__hours-work ul {
         padding-left: 20px;
     }

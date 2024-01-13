@@ -321,8 +321,6 @@
                 <a href="?page=<?php echo $currentPage + 1; ?>" class="btn btn-success mx-1">Next</a>
                 <a href="?page=<?php echo $totalPages; ?>" class="btn btn-success">Last</a>
                 <?php endif; ?>
-
-
             </div>
 
 

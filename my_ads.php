@@ -25,6 +25,30 @@ if (isset($_SESSION['user_email'])) {
     $user_id = $row['user_id']; 
 }
 
+$countSql = "SELECT COUNT(*) AS total FROM ad_info WHERE user_id = $user_id";
+$countResult = $connection->query($countSql);
+$totalRecords = $countResult->fetch_assoc()['total'];
+
+// Define the number of records per page
+$recordsPerPage = 8; // Change this to your desired number
+
+// Calculate the total number of pages
+$totalPages = ceil($totalRecords / $recordsPerPage);
+
+ // Determine the current page number
+ if (!isset($_GET['page'])) {
+    $currentPage = 1;
+} else {
+    $currentPage = $_GET['page'];
+}
+
+// Calculate the starting record for the query based on the current page
+$offset = ($currentPage - 1) * $recordsPerPage;
+
+// Modify your SQL query to include LIMIT and OFFSET
+$sql = "SELECT * FROM ad_info WHERE user_id = $user_id ORDER BY ad_id DESC LIMIT $recordsPerPage OFFSET $offset";
+$result = $connection->query($sql);
+
 ?>
 
 
@@ -154,14 +178,9 @@ if (isset($_SESSION['user_email'])) {
                                 <div class="col-md-12">
                                     <div class="listing__products" id="product_list">
                                         <?php
-
-                                            // Modify your SQL query to include LIMIT and OFFSET
-                                            $sql = "SELECT * FROM ad_info WHERE user_id = $user_id  ORDER BY ad_id DESC ";
-                                            $result = $connection->query($sql);
-
                                             // Check if there are rows returned from the query
                                             if ($result->num_rows > 0) {
-                                                while($row = $result->fetch_assoc()) {
+                                                while ($row = $result->fetch_assoc()) {
                                         ?>
 
                                         <div class="col-6 col-xl-3 col-md-3 col-sm-3">
@@ -240,18 +259,45 @@ if (isset($_SESSION['user_email'])) {
                                         ?>
                                     </div>
                                 </div>
-                        </div>
-        </main>
-    </div>
-    </div>
-    </section>
+                                <!-- Display pagination links -->
+                                <div class="pagination justify-content-center mt-4">
+                                    <?php if ($currentPage > 1) : ?>
+                                    <!-- First and Previous buttons -->
+                                    <a href="?page=1" class="btn btn-success">First</a>
+                                    <a href="?page=<?php echo $currentPage - 1; ?>"
+                                        class="btn btn-success mx-1">Previous</a>
+                                    <?php endif; ?>
+                                    <?php for ($page = max(1, $currentPage - 2); $page <= min($currentPage + 2, $totalPages); $page++) : ?>
+                                    <!-- Page number buttons -->
+                                    <?php if ($page == $currentPage) : ?>
+                                    <a href="?page=<?php echo $page; ?>" class="btn btn-success mx-1 active"
+                                        style="color: white; background-color: green;"><?php echo $page; ?></a>
+                                    <?php else : ?>
+                                    <a href="?page=<?php echo $page; ?>" class="btn btn-outline-success mx-1"
+                                        style="color: green; transition: background-color 0.3s;"
+                                        onmouseover="this.style.color='white'; this.style.backgroundColor='green'"
+                                        onmouseout="this.style.color='green'; this.style.backgroundColor='#fff'"><?php echo $page; ?></a>
+                                    <?php endif; ?>
+                                    <?php endfor; ?>
 
-    </div>
-    </main>
-    <!-- style="margin-top: -95px;" -->
-    <footer class="footer">
-        <?php include "footer.php"; ?>
-    </footer>
+                                    <?php if ($currentPage < $totalPages) : ?>
+                                    <!-- Next and Last buttons -->
+                                    <a href="?page=<?php echo $currentPage + 1; ?>"
+                                        class="btn btn-success mx-1">Next</a>
+                                    <a href="?page=<?php echo $totalPages; ?>" class="btn btn-success">Last</a>
+                                    <?php endif; ?>
+                                </div>
+                            </main>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+        <!-- style="margin-top: -95px;" -->
+        <footer class="footer">
+            <?php include "footer.php"; ?>
+        </footer>
     </div>
 
     <script src="assest/jquery.js"></script>

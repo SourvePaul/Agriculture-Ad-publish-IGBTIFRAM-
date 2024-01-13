@@ -29,7 +29,7 @@ if ($result->num_rows > 0) {
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="career.php">
                                 Career
                             </a>
                         </li>

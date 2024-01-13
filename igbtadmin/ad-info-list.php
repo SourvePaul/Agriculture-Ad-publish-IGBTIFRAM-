@@ -91,22 +91,17 @@
                                                     height="100" width="100">
                                             </td>
                                             <td>
-                                                <?php
-                                                    // Fetch multiple images for each row
-                                                    $ad_id = $row['ad_id']; // Assuming 'ad_id' is the primary key for ad_info table
-                                                    $sql_images = "SELECT multiple_images FROM ad_info WHERE ad_id = '$ad_id'";
-                                                    $result_images = $connection->query($sql_images);
-
-                                                    // Display the fetched images in the table cell
-                                                    if ($result_images && $result_images->num_rows > 0) {
-                                                        while ($image_row = $result_images->fetch_assoc()) {
-                                                ?>
-                                                <img src="images/advertisement/<?php echo $image_row['multiple_images']; ?>"
-                                                    alt="Multiple Image" height="40" width="40">
-                                                <?php
+                                                <?php 
+                                                    $res = $row['multiple_images'];
+                                                    $res = explode(" ", $res);
+        
+                                                    foreach ($res as $image) {
+                                                        $imagePath = 'images/advertisement/' . $image;
+        
+                                                        // Check if the image path is not empty and the file exists
+                                                        if (!empty($image) && file_exists($imagePath)) {
+                                                            echo '<img src="' . $imagePath . '" height="40px" width="40px" />';
                                                         }
-                                                    } else {
-                                                        echo "No images found"; // If no images are associated with the ad_id
                                                     }
                                                 ?>
                                             </td>

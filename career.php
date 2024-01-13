@@ -84,17 +84,35 @@ if (isset($_SESSION['user_email'])) {
 
         <main class="main">
             <div class="container__1620">
+                <section class="first__screen">
+                    <div class="row">
+                        <div class="col-md-12" style="padding: 20px 0px;padding-bottom: 55px;">
+                            <h4 class="text-center text-white" style="font-weight:bold;">iGbetiFarm is the Best
+                                Marketplace to Buy & sell Your
+                                Agricultural products quickly</h4><br />
+
+                            <h3 class="text-center text-white" style="font-weight:bold;">Career</h3>
+                            <h6 class="text-center" style="font-weight:bold; color:#8a288f;">Join Our Team</h6>
+                        </div>
+                    </div>
+                </section>
                 <div id="main-content">
                     <div class="container">
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-xl-12">
                                 <div class="post-container">
-
- <h1>Career</h1>
-If you are interested in this offer, please send us your CV and a cover letter to jobs@igbetifarm.com
-   
-      
-                               </div>
+                                    <p>
+                                        We have exciting career opportunities waiting for you! If you are interested in
+                                        joining our team, please send your CV to:
+                                    </p>
+                                    <p style="font-weight: bold; font-size: 1.2em;">
+                                        <a href="mailto:support@igbet.com">support@igbet.com</a>
+                                    </p>
+                                    <p>
+                                        We look forward to hearing from you and exploring the possibilities of working
+                                        together.
+                                    </p>
+                                </div>
                             </div>
 
                         </div>
@@ -104,7 +122,7 @@ If you are interested in this offer, please send us your CV and a cover letter t
             </div>
         </main>
 
-        <footer class="footer">
+        <footer class="footer" style="margin-top: -519px;">
             <?php include "footer.php"; ?>
         </footer>
     </div>
