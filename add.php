@@ -516,19 +516,20 @@ $result = mysqli_query($connection, $sql) or die("Query failed from users.");
                         </div>
                         <div class="aside__hours-work">
                             <h4 class="title">Safety tips</h4>
-                            <ul>
-                                <li>
-                                    Remember, don't send any pre-payments
-                                </li>
-                                <li>
-                                    Meet the seller at a safe public place
-                                </li>
-                                <li>
-                                    Inspect the goods to make sure they meet your needs
-                                </li>
-                                <li>
-                                    Check all documentation and only pay if you're satisfied
-                                </li>
+                            <ul style="padding-left:0px;">
+                                <?php 
+                                    $defaultSafetyTipType = 'tips';
+                                    $sql1 = "SELECT detail FROM pages WHERE types='$defaultSafetyTipType'";
+                                    $result1 = $connection->query($sql1);
+                                    if ($result1->num_rows > 0) {
+                                        $row1 = $result1->fetch_assoc();
+                                        $safetyTipContent = $row1['detail'];
+                                    // Check if content exists before displaying the bullet point
+                                    if (!empty($safetyTipContent)) {
+                                        echo '<p>' . $safetyTipContent . '</p>';
+                                    }
+                                    }
+                                ?>
                             </ul>
                         </div>
                     </div>

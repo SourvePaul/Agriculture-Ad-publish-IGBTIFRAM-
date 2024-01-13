@@ -71,14 +71,14 @@ if ($result->num_rows > 0) {
                             <a href="mailto:inquiry@igbetifarm.com">inquiry@igbetifarm.com</a>
                         </li>
                         <li>
-                            <a href="#">Safety tips</a>
+                            <a href="safety_tips.php?type_info=tips">Safety tips</a>
                         </li>
                         <li>
-                            <a href="#">Contact Us
+                            <a href="contact_us.php?type_info=contact">Contact Us
                             </a>
                         </li>
                         <li>
-                            <a href="#">FAQ
+                            <a href="FAQ.php?type_info=faq">FAQ
                             </a>
                         </li>
                     </ul>
@@ -124,13 +124,13 @@ if ($result->num_rows > 0) {
                     <h4 class="title">Hot links</h4>
                     <ul class="px-0">
                         <li>
-                            <a href="#">Brand</a>
+                            <a href="brand.php?type_info=brand">Brand</a>
                         </li>
                         <li>
-                            <a href="#">Regions</a>
+                            <a href="region.php?type_info=regions">Regions</a>
                         </li>
                         <li>
-                            <a href="#">iGbetiFarm Africa
+                            <a href="iGbetiFarm_africa.php?type_info=iGbetiFarm_africa">iGbetiFarm Africa
                             </a>
                         </li>
 

@@ -144,6 +144,24 @@
                                                     <option value="manage_pages.php?type_info=cookieP">
                                                         Cookie Policy
                                                     </option>
+                                                    <option value="manage_pages.php?type_info=contact">
+                                                        Contact Us
+                                                    </option>
+                                                    <option value="manage_pages.php?type_info=faq">
+                                                        FAQ
+                                                    </option>
+                                                    <option value="manage_pages.php?type_info=tips">
+                                                        Safety tips
+                                                    </option>
+                                                    <option value="manage_pages.php?type_info=iGbetiFarm_africa">
+                                                        iGbetiFarm Africa
+                                                    </option>
+                                                    <option value="manage_pages.php?type_info=regions">
+                                                        Regions
+                                                    </option>
+                                                    <option value="manage_pages.php?type_info=brand">
+                                                        Brand
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div><br />
@@ -166,20 +184,20 @@
                                                             case "aboutus":
                                                                 echo "About US";
                                                                 break;
-                                                            case "software" :
-                                                                echo "Offers";
+                                                            case "tips" :
+                                                                echo "Safety tips";
                                                                 break;	
-                                                            case "aspnet" :
-                                                                echo "Vission And MISSION";
+                                                            case "brand" :
+                                                                echo "Brand";
                                                                 break;
-                                                            case "objectives" :
-                                                                echo "Objectives";
+                                                            case "iGbetiFarm_africa" :
+                                                                echo "iGbetiFarm Africa";
                                                                 break;
-                                                            case "disclaimer" :
-                                                                echo "Disclaimer";
+                                                            case "faq" :
+                                                                echo "FAQ";
                                                                 break;
-                                                            case "vbnet" :
-                                                                echo "Partner With Us";
+                                                            case "regions" :
+                                                                echo "Regions";
                                                                 break;
                                                             case "cookieP" :
                                                                 echo "Cookie Policy";
