@@ -263,12 +263,9 @@ if (isset($_SESSION['user_email'])) {
 
                             <h6 class="text-white d-flex justify-content-center mt-3 gap-2" style="padding-top: 14px;">
                                 Find anything in
-                                <button type="button" class="btn btn-dark btn-sm" data-toggle="modal"
-                                    data-target="#myModal"
-                                    style="margin: -8px 0px; background-color: #8a288f !important;">
-                                    All Nigeria
-                                </button>
 
+                                <a href="ad_locations.php" class="btn btn-dark btn-sm"
+                                    style="margin: -8px 0px; background-color: #8a288f !important;"> All Nigeria</a>
                                 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLongTitle"
                                     aria-hidden="true" role="dialog">
                                     <div class="modal-dialog modal-xl" role="document">
@@ -386,7 +383,8 @@ if (isset($_SESSION['user_email'])) {
                                                         <!-- <div class="b-main-page__banners_block__banner"> -->
                                                         <div
                                                             class="b-post-advert-banner b-main-page__post-advert-banner">
-                                                            <button aria-label="Post ad"
+                                                            <button onclick="location.href = 'postad.php'"
+                                                                aria-label="Post ad"
                                                                 class="b-post-advert-banner__button">
                                                                 <div class="b-post-advert-banner__button_inner">
                                                                     <div>

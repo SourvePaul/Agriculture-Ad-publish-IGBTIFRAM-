@@ -18,7 +18,7 @@ if (isset($_GET['ad_id']) && is_numeric($_GET['ad_id'])) {
 
     if ($success) {
         // Delete files from the save location
-        $save_location = "igbtadmin/images/advertisement/";
+        $save_location = "igbetifarmadmin/images/advertisement/";
         
         if (unlink($save_location . $feature_image)) {
             $multiple_images = explode(" ", $multiple_images);

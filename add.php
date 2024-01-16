@@ -161,7 +161,7 @@ $result = mysqli_query($connection, $sql) or die("Query failed from users.");
                         <h4 class="title mb-4"><?php echo $row['ad_title']; ?></h4>
                         <div class="slider__top">
                             <div>
-                                <img src="igbtadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
+                                <img src="igbetifarmadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
                                     alt="<?php echo $row['ad_id']; ?>" style="width: 750px; height: 450px;" />
                             </div>
 
@@ -170,7 +170,7 @@ $result = mysqli_query($connection, $sql) or die("Query failed from users.");
                                     foreach ($multipleImages as $image) {
                             ?>
                             <div>
-                                <img src="igbtadmin/images/advertisement/<?php echo $image; ?>"
+                                <img src="igbetifarmadmin/images/advertisement/<?php echo $image; ?>"
                                     alt="<?php echo $row['ad_id']; ?>" style="width: 750px; height: 450px;" />
                             </div>
                             <?php 
@@ -180,14 +180,14 @@ $result = mysqli_query($connection, $sql) or die("Query failed from users.");
                         </div>
                         <div class="slider__second">
                             <div class="me-3">
-                                <img src="igbtadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
+                                <img src="igbetifarmadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
                                     alt="<?php echo $row['ad_id']; ?>" style="width: 192px; height: 128px;" />
                             </div>
                             <?php 
                                 foreach ($multipleImages as $image) {
                             ?>
                             <div class="me-3">
-                                <img src="igbtadmin/images/advertisement/<?php echo $image; ?>"
+                                <img src="igbetifarmadmin/images/advertisement/<?php echo $image; ?>"
                                     alt="<?php echo $row['ad_id']; ?>" style="width: 192px; height: 128px;" />
                             </div>
                             <?php 

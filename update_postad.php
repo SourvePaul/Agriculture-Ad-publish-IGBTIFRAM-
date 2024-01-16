@@ -212,7 +212,7 @@ if (isset($_SESSION['user_email'])) {
                                                 style="padding: 8px 0px; font-weight:bold;">Ad-Feature Image</label>
                                             <input type="file" class="form-control" id="exampleInputAdFeatureImage"
                                                 accept="image/*" name="ad_feature_image">
-                                            <img src="<?php echo  'igbtadmin/images/advertisement/' . $row12['ad_feature_image']; ?>"
+                                            <img src="<?php echo  'igbetifarmadmin/images/advertisement/' . $row12['ad_feature_image']; ?>"
                                                 alt="Feature Image Preview" style="width: 40px; height: 40px;">
                                         </div>
                                         <div class="form-group" style="padding: 10px 1px;">
@@ -226,7 +226,7 @@ if (isset($_SESSION['user_email'])) {
                                             $res = explode(" ", $res);
 
                                             foreach ($res as $image) {
-                                                $imagePath = 'igbtadmin/images/advertisement/' . $image;
+                                                $imagePath = 'igbetifarmadmin/images/advertisement/' . $image;
 
                                                 // Check if the image path is not empty and the file exists
                                                 if (!empty($image) && file_exists($imagePath)) {

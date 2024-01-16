@@ -42,7 +42,7 @@
                 
                         // Update this section to include dynamic h3 elements with links <h3><a href="' . $row["link_url"] . '">' . $row["title"] . '</a></h3>
                         $output .= '
-                            <img src="igbtadmin/images/banner/' . $row["banner_img"] . '" alt="banner_img" style="height: 215px; width:100%;">
+                            <img src="igbetifarmadmin/images/banner/' . $row["banner_img"] . '" alt="banner_img" style="height: 215px; width:100%;">
                             <div class="carousel-caption" style="text-align:center;">
                             <h3><a href="index.php?cat_id=' .  $row["cat_id"] . '" style="text-decoration:none; color:white;font-weight:bold;">' . $shortened_title . '</a></h3>
             </div>
@@ -167,7 +167,7 @@
                 <div class="row no-gutters">
                     <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 listing__products__image">
                         <a href="add.php?ad_id=<?php echo $row['ad_id']; ?>">
-                            <img src="igbtadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
+                            <img src="igbetifarmadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
                                 alt="<?php echo $row['ad_id']; ?>" class="card-img" width="360">
                         </a>
 
@@ -228,7 +228,7 @@
                     <div class="listing-card__box listing-card__box_featured" data-marker="0">
                         <div class="listing-card__media shine">
                             <a href="add.php?ad_id=<?php echo $row['ad_id']; ?>">
-                                <img src="igbtadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
+                                <img src="igbetifarmadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
                                     alt="<?php echo $row['ad_id']; ?>" width="360" height="200">
                             </a>
 

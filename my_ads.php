@@ -189,7 +189,7 @@ $result = $connection->query($sql);
                                                     data-marker="0">
                                                     <div class="listing-card__media shine">
                                                         <a href="add.php?ad_id=<?php echo $row['ad_id']; ?>">
-                                                            <img src="igbtadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
+                                                            <img src="igbetifarmadmin/images/advertisement/<?php echo $row['ad_feature_image']; ?>"
                                                                 alt="<?php echo $row['ad_id']; ?>" width="360"
                                                                 height="200">
                                                         </a>

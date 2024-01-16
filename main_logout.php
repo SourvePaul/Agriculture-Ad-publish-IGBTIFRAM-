@@ -1,6 +1,6 @@
 <?php 
 
-require_once 'igbtadmin/php_action/db_connection_checker.php';
+require_once 'igbetifarmadmin/php_action/db_connection_checker.php';
 
 // remove all session variables
 session_unset(); 

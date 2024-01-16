@@ -7,7 +7,7 @@ $result = $connection->query($sql);
 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-    echo '<img src="igbtadmin/images/footer/' . $row['footer_top_image'] . '" alt="footer_image" width="100%" height="200px" style="margin-top: 3px;">';
+    echo '<img src="igbetifarmadmin/images/footer/' . $row['footer_top_image'] . '" alt="footer_image" width="100%" height="200px" style="margin-top: 3px;">';
 } else {
     // Handle case when no active image is found
     echo '<img src="img/f.png" alt="logo" width="100%" height="200px" style="margin-top: 3px;">';
@@ -24,7 +24,7 @@ if ($result->num_rows > 0) {
                     <!-- <div class="d-flex flex-wrap flex-lg-column justify-content-between"> -->
                     <ul class="mb-5 px-0">
                         <li>
-                            <a href="#">
+                            <a href="aboutus.php?type_info=aboutus">
                                 About iGbetiFarm
                             </a>
                         </li>
@@ -48,11 +48,7 @@ if ($result->num_rows > 0) {
                                 Cookie Policy
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
-                                Copyright Infringement Policy
-                            </a>
-                        </li>
+
                     </ul>
                     <!-- </div> -->
                 </div>
@@ -62,7 +58,7 @@ if ($result->num_rows > 0) {
                     <h4 class="title">Support</h4>
                     <ul class="px-0">
                         <li>
-                            <a href="mailto:support@iGbetiFarm">support@igbetifarm.com</a>
+                            <a href="mailto:support@igbetifarm.com">support@igbetifarm.com</a>
                         </li>
                         <li>
                             <a href="mailto:info@igbetifarm.com">info@igbetifarm.com</a>
@@ -102,18 +98,18 @@ if ($result->num_rows > 0) {
                             <a href="#">Our blog</a>
                         </li>
                         <li>
-                            <a href="#">iGbetiFarm on FB</a>
+                            <a href="https://www.facebook.com/IGbetiFarm">iGbetiFarm on FB</a>
                         </li>
                         <li>
-                            <a href="#">Our instagram
+                            <a href="https://www.instagram.com/igbetifarm1">Our instagram
                             </a>
                         </li>
                         <li>
-                            <a href="#">Our YouTube
+                            <a href="https://www.youtube.com/iGbetiFarm">Our YouTube
                             </a>
                         </li>
                         <li>
-                            <a href="#">Our Twitter
+                            <a href="https://twitter.com/i/flow/login?redirect_after_login=%2Figbetifarm01">Our Twitter
                             </a>
                         </li>
                     </ul>

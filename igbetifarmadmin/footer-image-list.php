@@ -5,13 +5,13 @@
   if(isset($_GET['f_status']) && $_GET['f_status'] == 'active' && isset($_GET['f_id']) && !empty($_GET['f_id'])){
     $query = "UPDATE footer_image SET f_status = 0 WHERE f_id = ".$_GET['f_id']."";
     $db->query($query);
-    header("location:http://localhost/igbt/igbtadmin/footer-image-list.php");
+    header("location:http://localhost/igbt/igbetifarmadmin/footer-image-list.php");
     }
     
     if(isset($_GET['f_status']) && $_GET['f_status'] == 'deactive' && isset($_GET['f_id']) && !empty($_GET['f_id'])){
     $query = "UPDATE footer_image SET f_status = 1 WHERE f_id = ".$_GET['f_id']."";
     $db->query($query);
-    header("location:http://localhost/igbt/igbtadmin/footer-image-list.php");
+    header("location:http://localhost/igbt/igbetifarmadmin/footer-image-list.php");
     }
 ?>
 <html>

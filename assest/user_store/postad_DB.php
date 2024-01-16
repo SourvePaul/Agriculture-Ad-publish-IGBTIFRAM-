@@ -11,7 +11,7 @@ require('../../db_connect.php');
         $ad_feature_imageTemp = $_FILES['ad_feature_image']['tmp_name'];
 
         // Move uploaded single image to desired location
-        move_uploaded_file($ad_feature_imageTemp, '../../igbtadmin/images/advertisement/' . $ad_feature_image);
+        move_uploaded_file($ad_feature_imageTemp, '../../igbetifarmadmin/images/advertisement/' . $ad_feature_image);
 
         echo "Feature Image Uploaded: {$ad_feature_image}<br>"; 
     } else {
@@ -23,7 +23,7 @@ require('../../db_connect.php');
 
         $file='';
         $file_tmp='';
-        $location="../../igbtadmin/images/advertisement/";
+        $location="../../igbetifarmadmin/images/advertisement/";
         $data='';
         $multiple_images='';
         foreach($_FILES['multiple_images']['name'] as $key=>$val){
@@ -40,7 +40,7 @@ require('../../db_connect.php');
         //     $multipleImageTemp = $_FILES['multiple_images']['tmp_name'][$i];
 
         //     // Move each uploaded multiple image to desired location
-        //     move_uploaded_file($multipleImageTemp, '../../igbtadmin/images/advertisement/' . $multiple_images);
+        //     move_uploaded_file($multipleImageTemp, '../../igbetifarmadmin/images/advertisement/' . $multiple_images);
 
         //     echo "Multiple Image " . ($i + 1) . " Uploaded: {$multiple_images}";
         // }

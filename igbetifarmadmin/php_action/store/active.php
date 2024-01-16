@@ -13,7 +13,7 @@ if ($stmt) {
     $stmt->bind_param("ii", $status, $ad_id);
     $stmt->execute();
         // Redirect to the appropriate page after the update
-        header('Location: http://localhost/igbtdemo/igbtadmin/ad-info-list.php');
+        header('Location: http://localhost/igbtdemo/igbetifarmadmin/ad-info-list.php');
         exit(); // Ensure no code is executed after the header redirect
     } else {
         // Handle the case where the prepared statement fails
@@ -23,6 +23,6 @@ if ($stmt) {
     $connection->close();
     ?>
 <!-- mysqli_query($connection, $updateQuery);
-header('location:http://localhost/igbtdemo/igbtadmin/ad-info-list.php')
+header('location:http://localhost/igbtdemo/igbetifarmadmin/ad-info-list.php')
 
 ?> -->

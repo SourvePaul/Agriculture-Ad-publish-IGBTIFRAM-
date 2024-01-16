@@ -23,7 +23,7 @@ require('../../db_connect.php');
         // $ad_id = $_GET['ad_id'];
 
         // Define the directory where you want to store the images
-        $uploadDirectory = '../../igbtadmin/images/advertisement/';
+        $uploadDirectory = '../../igbetifarmadmin/images/advertisement/';
 
         // Initialize variables for feature image and multiple images
         $newFeatureImageName = "";

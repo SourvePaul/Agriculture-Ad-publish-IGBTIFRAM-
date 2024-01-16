@@ -94,7 +94,7 @@ if (isset($_SESSION['user_email'])) {
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <a class="post-img" href="">
-                                                    <img src="igbtadmin/images/blog/1.jpg" alt="1">
+                                                    <img src="igbetifarmadmin/images/blog/1.jpg" alt="1">
                                                 </a>
                                             </div>
                                             <div class="col-md-8">
@@ -131,7 +131,7 @@ if (isset($_SESSION['user_email'])) {
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <a class="post-img" href="">
-                                                    <img src="igbtadmin/images/blog/2.jpg" alt="1">
+                                                    <img src="igbetifarmadmin/images/blog/2.jpg" alt="1">
                                                 </a>
                                             </div>
                                             <div class="col-md-8">
@@ -168,7 +168,7 @@ if (isset($_SESSION['user_email'])) {
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <a class="post-img" href="">
-                                                    <img src="igbtadmin/images/blog/3.jpg" alt="1">
+                                                    <img src="igbetifarmadmin/images/blog/3.jpg" alt="1">
                                                 </a>
                                             </div>
                                             <div class="col-md-8">
@@ -205,7 +205,7 @@ if (isset($_SESSION['user_email'])) {
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <a class="post-img" href="">
-                                                    <img src="igbtadmin/images/blog/4.jpg" alt="1">
+                                                    <img src="igbetifarmadmin/images/blog/4.jpg" alt="1">
                                                 </a>
                                             </div>
                                             <div class="col-md-8">
@@ -242,7 +242,7 @@ if (isset($_SESSION['user_email'])) {
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <a class="post-img" href="">
-                                                    <img src="igbtadmin/images/blog/5.jpg" alt="1">
+                                                    <img src="igbetifarmadmin/images/blog/5.jpg" alt="1">
                                                 </a>
                                             </div>
                                             <div class="col-md-8">
@@ -279,7 +279,7 @@ if (isset($_SESSION['user_email'])) {
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <a class="post-img" href="">
-                                                    <img src="igbtadmin/images/blog/6.jpg" alt="1">
+                                                    <img src="igbetifarmadmin/images/blog/6.jpg" alt="1">
                                                 </a>
                                             </div>
                                             <div class="col-md-8">
@@ -334,7 +334,7 @@ if (isset($_SESSION['user_email'])) {
                                     <h4>Recent Posts</h4>
                                     <div class="recent-post">
                                         <a class="post-img" href="#">
-                                            <img src="igbtadmin/images/blog/7.jpg" alt="r1" />
+                                            <img src="igbetifarmadmin/images/blog/7.jpg" alt="r1" />
                                         </a>
                                         <div class="post-content">
                                             <h5>
@@ -356,7 +356,7 @@ if (isset($_SESSION['user_email'])) {
 
                                     <div class="recent-post">
                                         <a class="post-img" href="#">
-                                            <img src="igbtadmin/images/blog/8.jpg" alt="r1" />
+                                            <img src="igbetifarmadmin/images/blog/8.jpg" alt="r1" />
                                         </a>
                                         <div class="post-content">
                                             <h5>
@@ -378,7 +378,7 @@ if (isset($_SESSION['user_email'])) {
 
                                     <div class="recent-post">
                                         <a class="post-img" href="#">
-                                            <img src="igbtadmin/images/blog/9.jpg" alt="r1" />
+                                            <img src="igbetifarmadmin/images/blog/9.jpg" alt="r1" />
                                         </a>
                                         <div class="post-content">
                                             <h5>
